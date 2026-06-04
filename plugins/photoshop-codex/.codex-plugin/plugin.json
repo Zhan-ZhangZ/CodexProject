@@ -1,0 +1,18 @@
+{
+  "name": "photoshop-codex",
+  "version": "1.0.0",
+  "description": "Control Adobe Photoshop with Codex.",
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Photoshop for Codex",
+    "shortDescription": "Let Codex operate local Photoshop",
+    "developerName": "Your Company",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ]
+  }
+}

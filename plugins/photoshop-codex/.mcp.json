@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "photoshop": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@your-company/photoshop-codex-mcp@1.0.0"
+      ],
+      "env": {
+        "LOG_LEVEL": "1"
+      }
+    }
+  }
+}

@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "ps-design",
+      "name": "photoshop-codex",
       "source": {
         "source": "local",
-        "path": "./plugins/ps-design"
+        "path": "./plugins/photoshop-codex"
       },
       "policy": {
         "installation": "AVAILABLE",
