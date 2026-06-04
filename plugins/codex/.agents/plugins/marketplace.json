@@ -1,0 +1,20 @@
+{
+  "name": "my-codex-marketplace",
+  "interface": {
+    "displayName": "My Codex Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "hello-world",
+      "source": {
+        "source": "local",
+        "path": "./plugins/hello-world"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
