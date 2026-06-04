@@ -4,7 +4,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@your-company/photoshop-codex-mcp@1.0.0"
+        "@alisaitteke/photoshop-mcp"
       ],
       "env": {
         "LOG_LEVEL": "1"
