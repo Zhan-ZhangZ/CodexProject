@@ -5,18 +5,6 @@
   },
   "plugins": [
     {
-      "name": "hello-world",
-      "source": {
-        "source": "local",
-        "path": "./plugins/hello-world"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Productivity"
-    },
-    {
       "name": "ps-design",
       "source": {
         "source": "local",
