@@ -1,3 +1,15 @@
+# Large data / backup files
+backups/
+*.zip
+
+# Codex skills (managed separately, too many files for git)
+codex-skills/
+
+# Generated images
+taobao_image*.png
+taobao_instructions_long.png
+taobao_skills_showcase.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
