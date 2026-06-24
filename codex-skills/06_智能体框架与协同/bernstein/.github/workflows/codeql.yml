@@ -1,0 +1,68 @@
+name: CodeQL Security Analysis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "scripts/**"
+      - "pyproject.toml"
+  # No `paths:` filter on pull_request: branch protection on `main` lists
+  # `CodeQL` and `CodeQL (python)` as required status checks. If this
+  # workflow is path-filtered out of a PR (e.g. docs-only or workflow-only
+  # change), the required checks never appear and the PR sits BLOCKED
+  # indefinitely. Running CodeQL on every PR costs 2-3 min of CI but
+  # eliminates the deadlock; analysis is cheap when no Python source has
+  # changed because CodeQL re-uses its cached database.
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 4 * * 1"  # Weekly Monday 4 AM UTC
+
+concurrency:
+  group: codeql-${{ github.ref }}
+  cancel-in-progress: true
+
+# Default-deny at workflow scope; the analyze job re-asserts the narrow
+# writes it actually needs (Scorecard token-permissions).
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: CodeQL (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      security-events: write
+      contents: read
+      pull-requests: write
+      actions: read
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [python]
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@7211b7c8077ea37d8641b6271f6a365a22a5fbfa # v4
+        with:
+          languages: ${{ matrix.language }}
+          queries: +security-extended
+          config-file: .github/codeql/codeql-config.yml
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@7211b7c8077ea37d8641b6271f6a365a22a5fbfa # v4
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@7211b7c8077ea37d8641b6271f6a365a22a5fbfa # v4
+        with:
+          category: "/language:${{ matrix.language }}"

@@ -1,0 +1,73 @@
+name: Bug Report
+description: Something isn't working
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug. What did you expect vs what actually happened?
+      placeholder: "I ran `bernstein conduct --goal '...'` and got..."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to reproduce the issue
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: OS, Python version, bernstein version, which CLI agents you use
+      value: |
+        - OS:
+        - Python:
+        - Bernstein:
+        - Agent CLI: Claude Code / Codex / Gemini CLI / Other
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste relevant logs from `bernstein notes` or `.sdd/runtime/`
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: debug-bundle
+    attributes:
+      label: Debug bundle
+      description: |
+        Run `bernstein debug bundle --last` and attach the generated zip
+        file. The bundle contains a redacted `bernstein.yaml`, a
+        `doctor.json` snapshot, recent traces and metrics, and the tail
+        of `.sdd/runtime/*.log`. Secrets (API keys, tokens, passwords,
+        bearer headers, JWTs, SSH keys) are removed and `$HOME` paths
+        are collapsed to `~` before the zip is written.
+
+        Quick check before sharing: `unzip -p bernstein-debug-*.zip manifest.json`
+        prints the manifest with version, OS, and file list.
+
+        If you cannot run the command, attach any relevant files from
+        `.sdd/runtime/`.
+      placeholder: "Drag and drop the bernstein-debug-*.zip file here"
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Crash / data loss
+        - Feature broken
+        - Minor / cosmetic
+    validations:
+      required: false

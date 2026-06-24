@@ -1,0 +1,158 @@
+name: SonarQube scan
+
+# Runs after main CI succeeds or on manual dispatch.
+#
+# The workflow consumes the coverage-report artifact from the same CI run
+# that triggered it. It intentionally does not run directly on push:
+# push-time scans can start before CI uploads coverage.xml and then report
+# a partial fallback coverage number for main.
+on:  # zizmor: ignore[dangerous-triggers]
+  workflow_run:
+    workflows: ["CI"]
+    branches: [main]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: sonar-scan-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    name: SonarQube scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Run after main CI succeeds or on manual dispatch.
+    # SONAR_HOST_URL must be configured as a repo variable.
+    if: >-
+      ${{ vars.SONAR_HOST_URL != '' &&
+          (github.event_name == 'workflow_dispatch' ||
+           (github.event_name == 'workflow_run' &&
+            github.event.workflow_run.conclusion == 'success' &&
+            github.event.workflow_run.head_branch == 'main')) }}
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411  # v2.19.4
+        with:
+          egress-policy: audit
+          disable-sudo: true
+
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+        with:
+          # Sonar needs full git history for accurate blame.
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+
+      # Manual dispatch has no upstream run id, so resolve the most recent
+      # successful main CI run and pull its coverage-report artifact.
+      - name: Resolve latest successful CI run (workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        id: ci_run
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          run_id=$(gh run list \
+            --repo "${{ github.repository }}" \
+            --workflow ci.yml \
+            --branch main \
+            --status success \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId')
+          if [ -n "$run_id" ]; then
+            echo "Found successful CI run: $run_id"
+            echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::No successful CI run found on main; scanning without coverage"
+          fi
+
+      - name: Download coverage artifact (workflow_run)
+        if: github.event_name == 'workflow_run'
+        continue-on-error: true  # cancelled CI runs may not have reached the upload step
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8
+        with:
+          name: coverage-report
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download coverage artifact (workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch' && steps.ci_run.outputs.run_id != ''
+        continue-on-error: true  # manual bootstrap may not have a usable artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8
+        with:
+          name: coverage-report
+          run-id: ${{ steps.ci_run.outputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify coverage.xml present
+        id: coverage_check
+        run: |
+          if [ ! -f coverage.xml ] || [ ! -s coverage.xml ]; then
+            echo "::warning::coverage.xml not found or empty; will run thin coverage fallback"
+            echo "missing=true" >> "$GITHUB_OUTPUT"
+          else
+            size=$(wc -c < coverage.xml)
+            echo "coverage.xml found ($size bytes)"
+            echo "missing=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up uv for fallback
+        if: github.event_name == 'workflow_dispatch' && steps.coverage_check.outputs.missing == 'true'
+        uses: ./.github/actions/bootstrap
+
+      # Thin coverage fallback is manual-dispatch only. Automatic main
+      # scans without a CI coverage artifact skip the Sonar upload instead
+      # of sending a partial fallback coverage report.
+      - name: Thin coverage fallback
+        if: github.event_name == 'workflow_dispatch' && steps.coverage_check.outputs.missing == 'true'
+        timeout-minutes: 10
+        continue-on-error: true  # manual bootstrap should not fail before the scan step
+        run: |
+          set +e
+          uv sync --group dev --no-progress 2>&1 | tail -20 || true
+          uv run --no-progress python -m coverage run -m pytest \
+            tests/unit/observability \
+            tests/unit/cli/doctor \
+            tests/unit/telemetry \
+            -q --no-header \
+            --timeout=60 2>&1 | tail -40 || true
+          uv run --no-progress python -m coverage xml -o coverage.xml || true
+          if [ -f coverage.xml ] && [ -s coverage.xml ]; then
+            echo "Thin coverage fallback produced coverage.xml ($(wc -c < coverage.xml) bytes)"
+          else
+            echo "::warning::Thin coverage fallback did not produce coverage.xml; Sonar scan will be skipped"
+          fi
+
+      - name: Verify scan coverage input
+        id: scan_coverage
+        run: |
+          if [ -f coverage.xml ] && [ -s coverage.xml ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::No usable coverage.xml available; skipping Sonar scan"
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: SonarQube scan
+        if: steps.scan_coverage.outputs.available == 'true'
+        timeout-minutes: 10
+        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995  # v8.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+        with:
+          # `sonar.projectKey` and `sonar.projectName` come from
+          # `sonar-project.properties`. Keep source, test, exclusion,
+          # and coverage-exclusion scope in that file so local and CI
+          # scans use the same analysis boundary.
+          args: >
+            -Dsonar.python.version=3.12,3.13
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.scm.revision=${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+            -Dsonar.ws.timeout=600

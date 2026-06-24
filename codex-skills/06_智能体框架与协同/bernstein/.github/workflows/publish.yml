@@ -1,0 +1,291 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+# Permissions are declared per-job so that each job gets only what it
+# needs (Sonar S8264). The default permission for any job that does not
+# declare ``permissions:`` is an empty set.
+permissions: {}
+
+jobs:
+  # Protocol compatibility gate - blocks release if breaking changes found
+  protocol-gate:
+    name: Protocol Compatibility Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+        with:
+          enable-uv-cache: "false"
+
+      - name: Run protocol compatibility check
+        env:
+          RELEASE_REF: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          # Run protocol tests with protocol packages injected by uv.
+          # Bare uv package installation fails on tag runners before
+          # the first `uv run` creates the project environment.
+          set +e
+          uv run --with mcp --with a2a pytest tests/protocol/ -v 2>&1 | tee test-output.log
+          pytest_exit_code=${PIPESTATUS[0]}
+          set -e
+
+          # Generate results
+          PYTEST_EXIT_CODE="$pytest_exit_code" python << 'EOF'
+          import json
+          import os
+
+          results = []
+          pytest_exit_code = int(os.environ["PYTEST_EXIT_CODE"])
+          status = "pass" if pytest_exit_code == 0 else "fail"
+
+          result = {
+            "python": "3.12",
+            "mcp": "1.0",
+            "a2a": "0.2",
+            "status": status
+          }
+          results.append(result)
+
+          compat_data = {
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "release": os.environ.get("RELEASE_REF", ""),
+            "results": results
+          }
+
+          with open('release-compat-results.json', 'w') as f:
+              json.dump(compat_data, f, indent=2)
+          EOF
+
+          exit "$pytest_exit_code"
+
+      - name: Check against baseline
+        run: |
+          python scripts/check_compatibility.py \
+            --current-results release-compat-results.json \
+            --baseline tests/protocol/compatibility-baseline.json 2>&1 | tee gate-check.log
+
+      - name: Gate decision
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          if grep -q "ACKNOWLEDGE_BREAKING_CHANGES" <<< "$COMMIT_MSG"; then
+            echo "✅ Operator acknowledged breaking changes"
+            exit 0
+          fi
+
+          if grep -q '"breaking_changes": \[\]' gate-check.log; then
+            echo "✅ Gate passed - no breaking changes detected"
+            exit 0
+          else
+            echo "❌ Release blocked - breaking changes detected"
+            echo "To proceed: include 'ACKNOWLEDGE_BREAKING_CHANGES' in commit message"
+            exit 1
+          fi
+
+  # Safety: run tests before publishing even on manual tag push
+  test:
+    name: Verify tests pass
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+        with:
+          enable-uv-cache: "false"
+      - name: Quick lint check (full tests already passed in CI)
+        run: uv run ruff check src/
+      - name: Release test guard
+        run: uv run python scripts/run_tests.py -k release -x
+
+  version-check:
+    name: Verify tag matches pyproject.toml
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - name: Compare tag to pyproject.toml version
+        run: |
+          TAG="${GITHUB_REF#refs/tags/v}"
+          PKG=$(grep '^version = ' pyproject.toml | head -1 | sed 's/version = "\(.*\)"/\1/')
+          echo "Tag version:    $TAG"
+          echo "Package version: $PKG"
+          if [ "$TAG" != "$PKG" ]; then
+            echo "::error::Tag v$TAG does not match pyproject.toml version $PKG"
+            exit 1
+          fi
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [test, protocol-gate, version-check]
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+        with:
+          enable-uv-cache: "false"
+      - run: uv build
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    environment:
+      name: pypi
+      url: https://pypi.org/p/bernstein
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: dist
+          path: dist/
+      # Sigstore build-provenance attestation. Closes the FINOS AIGF
+      # CTRL-MODEL-SUPPLY-CHAIN release-artefact gap previously deferred
+      # in docs/compliance/finos-aigf-mapping.md. Every wheel + sdist
+      # gets a SLSA-3 attestation visible in the GitHub Release's
+      # "Sigstore" tab and verifiable via:
+      #   gh attestation verify <file> --owner sipyourdrink-ltd
+      # Keyless OIDC -- no pre-shared cosign key required at consumer
+      # site. Runs BEFORE the PyPI publish so a transparency-log entry
+      # exists before any consumer can pip-install the artefact.
+      - name: Attest build provenance (Sigstore)
+        uses: actions/attest-build-provenance@a2bbfa25375fe432b6a289bc6b6cd05ecd0c4c32 # v4.1.0
+        with:
+          subject-path: "dist/*"
+      - uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # release/v1
+        with:
+          skip-existing: true
+
+  github-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: dist
+          path: dist/
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          TAG="${GITHUB_REF#refs/tags/}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/* --clobber
+          else
+            gh release create "$TAG" dist/* \
+              --title "$TAG" \
+              --generate-notes
+          fi
+
+          asset_count=$(gh release view "$TAG" --json assets --jq '.assets | length')
+          if [ "$asset_count" -eq 0 ]; then
+            echo "::error::Release $TAG has no assets"
+            exit 1
+          fi
+
+  publish-npm:
+    name: Publish npm wrapper
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      # zizmor cache-poisoning: explicit no-cache on tag-triggered npm publish
+      # so a transitive lockfile bump can't be cached and re-served.
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6 # zizmor: ignore[cache-poisoning]
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Sync version from tag
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/v}"
+          cd packaging/npm
+          npm version "$VERSION" --no-git-tag-version --allow-same-version
+      - name: Publish to npm
+        env:
+          # packaging/npm/.npmrc uses ${NPM_TOKEN} for interpolation, so
+          # both variables must be set. NODE_AUTH_TOKEN is kept for
+          # compatibility with actions/setup-node's default config.
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "${NPM_TOKEN:-}" ]; then
+            echo "::warning::NPM_TOKEN is not configured; skipping npm wrapper publish"
+            exit 0
+          fi
+          cd packaging/npm
+          if ! npm publish --access public; then
+            echo "::warning::npm wrapper publish failed; continuing release"
+          fi

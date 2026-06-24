@@ -2,8 +2,8 @@
 backups/
 *.zip
 
-# Codex skills (managed separately, too many files for git)
-codex-skills/
+# Codex skills
+# codex-skills/ (Removed to track the complete project)
 
 # Generated images
 taobao_image*.png

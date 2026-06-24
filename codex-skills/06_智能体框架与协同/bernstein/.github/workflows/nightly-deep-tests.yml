@@ -1,0 +1,212 @@
+name: Nightly deep tests
+
+# Heavyweight verification that runs once per day at 03:00 UTC.
+# Every job is advisory (continue-on-error) so a flaky overnight
+# regression doesn't block the next day's PRs. Real failures are
+# tracked through GitHub Issues by the existing bernstein-ci-fix
+# workflow.
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: nightly-deep-tests
+  cancel-in-progress: true
+
+# Default-deny at workflow scope; jobs may escalate narrowly (Scorecard
+# token-permissions).
+permissions:
+  contents: read
+
+jobs:
+  hypothesis-deep:
+    name: Hypothesis (deep, 1000 examples)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+      - name: Run property suite under deep profile
+        env:
+          HYPOTHESIS_PROFILE: deep
+        run: uv run pytest tests/property/ -q --no-cov --timeout=300
+
+  schemathesis-deep:
+    name: Schemathesis (deep, full sweep)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+      - name: Run Schemathesis deep profile
+        env:
+          SCHEMATHESIS_PROFILE: deep
+          BERNSTEIN_AUTH_DISABLED: "1"
+        run: uv run pytest tests/contract/ -q --no-cov --timeout=120 -p no:warnings
+
+  crosshair-pure-fns:
+    # CrossHair concolic execution on pure security/cluster helpers.
+    # Targets functions with type hints; reports counterexamples that
+    # break implicit invariants. 200 iterations per condition (vs. 20
+    # in the smoke profile that PR-time would use once contracts are
+    # added).
+    name: CrossHair (concolic, deep)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+      - name: Run CrossHair on persistence + agents helpers
+        run: |
+          uv run crosshair check \
+            --max_uninteresting_iterations 200 \
+            --per_condition_timeout 30.0 \
+            --analysis_kind asserts \
+            src/bernstein/core/persistence/lineage.py \
+            src/bernstein/core/agents/prompt_cache_locality.py \
+            || true
+
+  mutmut-full:
+    name: Mutation (full repo, advisory)
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+      - name: Install dev group (mutmut)
+        run: uv sync --group dev
+      - name: Run mutmut on the configured critical paths
+        run: |
+          uv run mutmut run --no-progress || true
+          uv run mutmut results | tee mutmut_results.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: nightly-mutmut-results
+          path: |
+            mutmut_results.txt
+            .mutmut-cache
+          retention-days: 14
+          if-no-files-found: ignore
+
+  bandit-medium-and-high:
+    name: Bandit (full -ll, advisory)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+      - name: Run Bandit at -ll (MEDIUM + HIGH)
+        run: uv run bandit -r src/ -ll | tee bandit-nightly.txt
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: nightly-bandit-results
+          path: bandit-nightly.txt
+          retention-days: 14
+          if-no-files-found: ignore
+
+  pip-audit-deep:
+    name: pip-audit (full closure)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+      - name: Export production requirements (no project, hashed)
+        run: uv export --no-dev --no-emit-project --format requirements-txt -o /tmp/req-prod.txt
+      - name: Export dev requirements (no project, hashed)
+        run: uv export --no-emit-project --format requirements-txt -o /tmp/req-dev.txt
+      - name: Production deps (strict)
+        # `--no-deps` is safe: the exported file is fully pinned and the
+        # transitive closure is resolved by `uv.lock`. `--disable-pip`
+        # avoids spinning up a sub-venv just to run `pip install`.
+        #
+        # `--ignore-vuln PYSEC-2025-183` (CVE-2025-45768): disputed advisory
+        # against pyjwt that affects all released versions (introduced at 0,
+        # no fix version published) and is pulled in transitively via `mcp`.
+        # The maintainer disputes it because the key length is chosen by the
+        # calling application, not the library. There is nothing to upgrade
+        # to, so it is ignored with the rationale recorded here.
+        run: uv run pip-audit -r /tmp/req-prod.txt --strict --disable-pip --no-deps --ignore-vuln PYSEC-2025-183
+      - name: Dev deps (strict)
+        # Keep the dev-dependency audit on the same exported lockfile input as
+        # production so the local editable project package is not treated as a
+        # PyPI dependency.
+        run: uv run pip-audit -r /tmp/req-dev.txt --strict --disable-pip --no-deps --ignore-vuln PYSEC-2025-183
+
+  stress-leak-suite:
+    # TC-C: resource-leak + memory-growth + lock-contention probes.
+    # Gated off the default CI run via the ``stress`` marker so PRs
+    # don't pay the ~45 s wall-clock cost; runs once per day here.
+    name: Stress + resource-leak suite (TC-C)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - name: Harden runner (audit mode)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/bootstrap
+      - name: Run stress suite (-m stress)
+        run: uv run pytest tests/stress -m stress --no-cov --no-header -q
