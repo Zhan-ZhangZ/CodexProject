@@ -1,14 +1,13 @@
 # Large data / backup files
-backups/
+# backups/ (Allows the backups folder structure, but *.zip is ignored to avoid GitHub's 100MB file limit)
 *.zip
+
+# Excluded folders
+scripts/
+taobao_design/
 
 # Codex skills
 # codex-skills/ (Removed to track the complete project)
-
-# Generated images
-taobao_image*.png
-taobao_instructions_long.png
-taobao_skills_showcase.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
