@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝主图4 - 使用方法</title>
+    <style>
+        :root {
+            --brand-blue: #0960eb;
+            --light-blue: #f0f6ff;
+            --text-dark: #1f2937;
+            --text-muted: #4b5563;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle at top left, #ffffff, #e1edff);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(9, 96, 235, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(9, 96, 235, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+        }
+        .header-title {
+            font-size: 50px;
+            font-weight: 900;
+            color: var(--text-dark);
+            text-align: center;
+            margin: 10px 0 0 0;
+            z-index: 1;
+        }
+        .header-title span {
+            color: var(--brand-blue);
+        }
+        .subtitle {
+            font-size: 22px;
+            color: var(--text-muted);
+            text-align: center;
+            margin: 10px 0 0 0;
+            z-index: 1;
+            font-weight: 600;
+        }
+        .visual-flow {
+            width: 100%;
+            background: #ffffff;
+            border: 2px solid rgba(9, 96, 235, 0.15);
+            border-radius: 28px;
+            padding: 40px;
+            box-sizing: border-box;
+            box-shadow: 0 16px 40px rgba(9, 96, 235, 0.08);
+            z-index: 1;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .bubble {
+            padding: 20px 24px;
+            border-radius: 16px;
+            font-size: 22px;
+            line-height: 1.5;
+            position: relative;
+        }
+        .bubble-user {
+            background-color: var(--light-blue);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            color: var(--brand-blue);
+            font-weight: 700;
+            border: 1px solid rgba(9, 96, 235, 0.1);
+        }
+        .bubble-user::before {
+            content: '👤 用户输入需求：';
+            display: block;
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .flow-arrow {
+            text-align: center;
+            font-size: 32px;
+            color: var(--brand-blue);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .bubble-agent {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: monospace;
+            font-size: 18px;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .bubble-agent::before {
+            content: '🤖 Codex 智能决策中心：';
+            display: block;
+            font-size: 15px;
+            color: #888888;
+            margin-bottom: 6px;
+            font-family: sans-serif;
+            font-weight: 600;
+        }
+        .code-line {
+            color: #00ff00;
+        }
+        .code-info {
+            color: #00ffff;
+        }
+        .footer-cards {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            z-index: 1;
+        }
+        .footer-card {
+            flex: 1;
+            background-color: rgba(9, 96, 235, 0.04);
+            border: 1px solid rgba(9, 96, 235, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .footer-card-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin-bottom: 8px;
+        }
+        .footer-card-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div>
+        <h2 class="header-title">无需手动挑选 · <span>Codex自动调用</span></h2>
+        <div class="subtitle">内置全局多维索引，AI 智能体按需动态加载</div>
+    </div>
+
+    <div class="visual-flow">
+        <div class="bubble bubble-user">
+            “我想要制作一个网站，请先从我的技能包中挑选合适的 Skill 进行使用。”
+        </div>
+        
+        <div class="flow-arrow">⬇</div>
+        
+        <div class="bubble bubble-agent">
+            <span class="code-info">[INFO] 扫描技能资产包... 发现 880 个技能。</span><br>
+            <span class="code-info">[INFO] 正在匹配需求 "制作一个网站"...</span><br>
+            <span class="code-line">[LOAD] 成功加载：04_开发规划与设计/开发计划制定器</span><br>
+            <span class="code-line">[LOAD] 成功加载：10_自动化网页测试/网页自动化测试器</span><br>
+            <span class="code-info">[EXEC] 开始执行网站架构规划与生成...</span>
+        </div>
+    </div>
+
+    <div class="footer-cards">
+        <div class="footer-card">
+            <div class="footer-card-title">① 描述需求</div>
+            <div class="footer-card-desc">用自然语言跟 Codex 描述您的开发任务。</div>
+        </div>
+        <div class="footer-card">
+            <div class="footer-card-title">② 自动索引</div>
+            <div class="footer-card-desc">Codex 遍历技能索引文件，秒级匹配技能。</div>
+        </div>
+        <div class="footer-card">
+            <div class="footer-card-title">③ 极速匹配</div>
+            <div class="footer-card-desc">按需自动注入上下文，直接执行无需干预。</div>
+        </div>
+    </div>
+</body>
+</html>

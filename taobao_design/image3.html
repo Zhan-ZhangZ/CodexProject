@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝主图3 - 分类展示</title>
+    <style>
+        :root {
+            --brand-blue: #0960eb;
+            --light-blue: #f0f6ff;
+            --text-dark: #1f2937;
+            --text-muted: #4b5563;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle at top left, #ffffff, #e1edff);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(9, 96, 235, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(9, 96, 235, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+        }
+        .header-section {
+            text-align: center;
+            z-index: 1;
+            margin-top: 25px;
+        }
+        .header-title {
+            font-size: 46px;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin: 0;
+        }
+        .header-title span {
+            color: var(--brand-blue);
+        }
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin: 8px 0 0 0;
+            font-weight: 600;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            width: 100%;
+            z-index: 1;
+            margin: 12px 0;
+        }
+        .category-card {
+            background: #ffffff;
+            border: 1px solid rgba(9, 96, 235, 0.08);
+            border-radius: 20px;
+            padding: 16px 20px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-sizing: border-box;
+        }
+        .category-header {
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .category-header span.title-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .category-badge {
+            background-color: var(--light-blue);
+            color: var(--brand-blue);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .category-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+        .bottom-summary {
+            background-color: rgba(9, 96, 235, 0.04);
+            border: 1px dashed var(--brand-blue);
+            padding: 14px;
+            border-radius: 16px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            z-index: 1;
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="header-section">
+        <h2 class="header-title">热门核心技能 · <span>部分精选展示</span></h2>
+        <div class="subtitle">精选热门高频业务方向（包含 50+ 细分领域与 800+ 接口及 API 服务）</div>
+    </div>
+
+    <div class="category-grid">
+        <div class="category-card">
+            <div class="category-header">
+                <span class="title-text">📕 小红书全自动营销</span>
+                <span class="category-badge">运营必备</span>
+            </div>
+            <div class="category-desc">多账号全自动控制、爆款文案一键书写、热门趋势自动分析及排版自动发布。</div>
+        </div>
+        <div class="category-card">
+            <div class="category-header">
+                <span class="title-text">🎬 AI视频剪辑与制作</span>
+                <span class="category-badge">媒体剪辑</span>
+            </div>
+            <div class="category-desc">自动提取视频素材、AI音视频转写、Lottie矢量动效生成与React代码化剪辑。</div>
+        </div>
+        <div class="category-card">
+            <div class="category-header">
+                <span class="title-text">✍️ 小说与创意写作</span>
+                <span class="category-badge">网文助手</span>
+            </div>
+            <div class="category-desc">网络文学大纲快速编写、剧情分镜设计、角色性格拆解与多风格精彩片段续写。</div>
+        </div>
+        <div class="category-card">
+            <div class="category-header">
+                <span class="title-text">🔬 学术论文与科研工具</span>
+                <span class="category-badge">学术科研</span>
+            </div>
+            <div class="category-desc">支持顶刊规范的科研原理图/流程图AI自动绘制，以及Matplotlib学术图表规范生成。</div>
+        </div>
+        <div class="category-card">
+            <div class="category-header">
+                <span class="title-text">📈 股市投研与量化交易</span>
+                <span class="category-badge">金融量化</span>
+            </div>
+            <div class="category-desc">A股/港股/美股多因子财务审查、大佬评审团多智能体协同投研、龙虎榜跟踪与回测。</div>
+        </div>
+        <div class="category-card">
+            <div class="category-header">
+                <span class="title-text">🎨 智能生图与爆款文案</span>
+                <span class="category-badge">文案美化</span>
+            </div>
+            <div class="category-desc">图像超清无损增强、AI Logo与宣传海报设计、文案去除AI腔调高自然度润色。</div>
+        </div>
+    </div>
+
+    <div class="bottom-summary">一键导入 50+ 核心分类，包含 800+ 接口与 API 集成服务</div>
+</body>
+</html>

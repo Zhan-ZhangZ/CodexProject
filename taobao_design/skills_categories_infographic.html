@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeX Skills 54大分类简表</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 8px;
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+        }
+
+        .categories-container {
+            background: #ffffff;
+            padding: 12px 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            width: 760px;
+            box-sizing: border-box;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px 16px;
+        }
+
+        .item {
+            font-size: 11.5px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .num {
+            font-family: SFMono-Regular, Consolas, monospace;
+            font-weight: 700;
+            color: #0960eb;
+            background: #f0f6ff;
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-size: 10.5px;
+            min-width: 16px;
+            text-align: center;
+        }
+
+        .name {
+            font-weight: 600;
+            color: #334155;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div class="categories-container" id="capture-target">
+        <div class="grid">
+            <div class="item"><span class="num">01</span><span class="name">代码质量与规范</span></div>
+            <div class="item"><span class="num">02</span><span class="name">代码库迁移与重构</span></div>
+            <div class="item"><span class="num">03</span><span class="name">代码库分析与探针</span></div>
+            <div class="item"><span class="num">04</span><span class="name">开发规划与设计</span></div>
+            <div class="item"><span class="num">05</span><span class="name">自动化部署与CI-CD</span></div>
+            <div class="item"><span class="num">06</span><span class="name">智能体框架与协同</span></div>
+            <div class="item"><span class="num">07</span><span class="name">GitHub与PR自动化</span></div>
+            <div class="item"><span class="num">08</span><span class="name">MCP服务开发与评估</span></div>
+            <div class="item"><span class="num">09</span><span class="name">错误诊断与Sentry对接</span></div>
+            <div class="item"><span class="num">10</span><span class="name">自动化网页测试</span></div>
+            <div class="item"><span class="num">11</span><span class="name">Composio集成服务</span></div>
+            <div class="item"><span class="num">12</span><span class="name">任务与需求管理(Linear-Jira)</span></div>
+            <div class="item"><span class="num">13</span><span class="name">会议纪要与行动项分析</span></div>
+            <div class="item"><span class="num">14</span><span class="name">企业内部通知与沟通</span></div>
+            <div class="item"><span class="num">15</span><span class="name">财务发票提取与归档</span></div>
+            <div class="item"><span class="num">16</span><span class="name">Notion知识库管理</span></div>
+            <div class="item"><span class="num">17</span><span class="name">Notion规格说明转落地</span></div>
+            <div class="item"><span class="num">18</span><span class="name">客服工单分类与自动回复</span></div>
+            <div class="item"><span class="num">19</span><span class="name">文件整理与清理工具</span></div>
+            <div class="item"><span class="num">20</span><span class="name">文档报表自动生成(paperjsx)</span></div>
+            <div class="item"><span class="num">21</span><span class="name">团队技能共享</span></div>
+            <div class="item"><span class="num">22</span><span class="name">短信验证码服务</span></div>
+            <div class="item"><span class="num">23</span><span class="name">邮件草稿润色与CONDENSE</span></div>
+            <div class="item"><span class="num">24</span><span class="name">更新日志自动生成</span></div>
+            <div class="item"><span class="num">25</span><span class="name">内容调研与写作</span></div>
+            <div class="item"><span class="num">26</span><span class="name">内容版权与合规溯源</span></div>
+            <div class="item"><span class="num">27</span><span class="name">小说与创意写作</span></div>
+            <div class="item"><span class="num">28</span><span class="name">简历定制与优化</span></div>
+            <div class="item"><span class="num">29</span><span class="name">去AI味文本润色</span></div>
+            <div class="item"><span class="num">30</span><span class="name">电子表格公式助手</span></div>
+            <div class="item"><span class="num">31</span><span class="name">竞品广告提取与分析</span></div>
+            <div class="item"><span class="num">32</span><span class="name">Datadog日志筛选</span></div>
+            <div class="item"><span class="num">33</span><span class="name">开发者成长与行为分析</span></div>
+            <div class="item"><span class="num">34</span><span class="name">销售线索调研与富化</span></div>
+            <div class="item"><span class="num">35</span><span class="name">域名创意与可用性检查</span></div>
+            <div class="item"><span class="num">36</span><span class="name">抽奖与随机选人</span></div>
+            <div class="item"><span class="num">37</span><span class="name">LangSmith链路分析</span></div>
+            <div class="item"><span class="num">38</span><span class="name">市场新闻与行情分析</span></div>
+            <div class="item"><span class="num">39</span><span class="name">品牌设计与画布资产</span></div>
+            <div class="item"><span class="num">40</span><span class="name">深层链接构建工具</span></div>
+            <div class="item"><span class="num">41</span><span class="name">图像增强与GIF制作</span></div>
+            <div class="item"><span class="num">42</span><span class="name">视频下载与离线整理</span></div>
+            <div class="item"><span class="num">43</span><span class="name">主题色与设计Token配置</span></div>
+            <div class="item"><span class="num">44</span><span class="name">Skill开发脚手架与安装器</span></div>
+            <div class="item"><span class="num">45</span><span class="name">API与第三方应用集成</span></div>
+            <div class="item"><span class="num">46</span><span class="name">小红书文案与自动控制</span></div>
+            <div class="item"><span class="num">47</span><span class="name">视频制作与剪辑</span></div>
+            <div class="item"><span class="num">48</span><span class="name">Obsidian个人知识库管理</span></div>
+            <div class="item"><span class="num">49</span><span class="name">万能文档与格式转换</span></div>
+            <div class="item"><span class="num">50</span><span class="name">学术论文与科研图表</span></div>
+            <div class="item"><span class="num">51</span><span class="name">工业设计与CAD画图</span></div>
+            <div class="item"><span class="num">52</span><span class="name">法律实务与法务合规</span></div>
+            <div class="item"><span class="num">53</span><span class="name">电气与智能化设计</span></div>
+            <div class="item"><span class="num">54</span><span class="name">跨境电商与店铺管理</span></div>
+        </div>
+    </div>
+</body>
+</html>

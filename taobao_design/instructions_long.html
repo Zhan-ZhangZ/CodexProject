@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeX Skills 使用说明详情页</title>
+    <style>
+        :root {
+            --brand-blue: #0960eb;
+            --brand-orange: #f8a825;
+            --light-blue: #f0f6ff;
+            --light-orange: #fffbf2;
+            --text-dark: #1f2937;
+            --text-muted: #4b5563;
+            --card-bg: #ffffff;
+            --border-color: rgba(9, 96, 235, 0.08);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 790px;
+            background: linear-gradient(to bottom, #ffffff 0%, #f5f9ff 15%, #e1edff 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Grid background effect matching main images */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(9, 96, 235, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(9, 96, 235, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header block */
+        .header-section {
+            width: 100%;
+            padding: 50px 40px 30px 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Premium Logo matching main images */
+        .logo-container {
+            width: 110px;
+            height: 110px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(9, 96, 235, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255,255,255,0.8);
+            margin-bottom: 24px;
+        }
+
+        .codex-logo {
+            width: 72px;
+            height: 72px;
+            background-color: #ffffff;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+        }
+
+        .codex-logo::before {
+            content: '';
+            position: absolute;
+            width: 48px;
+            height: 32px;
+            background: linear-gradient(135deg, #0960eb, #0044cc);
+            border-radius: 16px;
+            top: 20px;
+            left: 12px;
+            box-shadow: 0 2px 6px rgba(9, 96, 235, 0.2);
+        }
+
+        .codex-logo::after {
+            content: '>_';
+            position: absolute;
+            color: #ffffff;
+            font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+            font-size: 16px;
+            font-weight: 800;
+            top: 27px;
+            left: 21px;
+            letter-spacing: -1px;
+        }
+
+        .header-badge {
+            background-color: var(--brand-blue);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 24px;
+            border-radius: 100px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(9, 96, 235, 0.15);
+            margin-bottom: 16px;
+        }
+
+        .title-h1 {
+            font-size: 44px;
+            font-weight: 900;
+            color: var(--brand-blue);
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(9, 96, 235, 0.05);
+        }
+
+        .title-sub {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin: 0;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        /* Feature Pills */
+        .feature-pills {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .pill-item {
+            background: #ffffff;
+            border: 1px solid rgba(9, 96, 235, 0.1);
+            color: var(--text-dark);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .pill-item span {
+            color: var(--brand-blue);
+            font-weight: 800;
+        }
+
+        /* Divider line */
+        .divider {
+            width: 710px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(9, 96, 235, 0.15), transparent);
+            margin: 10px 0 30px 0;
+        }
+
+        /* Content steps container */
+        .steps-container {
+            width: 100%;
+            padding: 0 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Step Card */
+        .step-card {
+            width: 710px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 28px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 25px rgba(9, 96, 235, 0.03);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .step-number-badge {
+            background-color: var(--light-blue);
+            color: var(--brand-blue);
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 0 1px rgba(9, 96, 235, 0.1);
+        }
+
+        .step-title-text {
+            flex-grow: 1;
+            margin-left: 16px;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: 0.5px;
+        }
+
+        .step-action-tag {
+            background: rgba(9, 96, 235, 0.06);
+            border: 1px solid rgba(9, 96, 235, 0.15);
+            color: var(--brand-blue);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .step-description strong {
+            color: var(--text-dark);
+        }
+
+        /* Mockup Browser Window Frame */
+        .browser-mockup {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid rgba(9, 96, 235, 0.12);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(9, 96, 235, 0.04);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+        }
+
+        .browser-bar {
+            height: 28px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            border-bottom: 1px solid rgba(9, 96, 235, 0.06);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .browser-title-bar {
+            margin-left: 20px;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: monospace;
+            background: #f1f5f9;
+            padding: 2px 14px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .browser-content {
+            background: #1e1e1e; /* keep dark inside since screenshots are dark mode */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .browser-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Double image grid for step 1 */
+        .step1-grid {
+            display: grid;
+            grid-template-columns: 280px 354px;
+            gap: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .step1-grid .browser-mockup {
+            margin-bottom: 0;
+            height: 100%;
+        }
+
+        .step1-grid .browser-content {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step1-grid .browser-content img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Prompt Box Styling */
+        .prompt-highlight-box {
+            background-color: var(--light-blue);
+            border: 1px dashed rgba(9, 96, 235, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .prompt-label {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--brand-blue);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .prompt-text {
+            font-family: "SF Mono", Monaco, Menlo, Consolas, monospace;
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.5;
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(9, 96, 235, 0.08);
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .prompt-copy-btn {
+            align-self: flex-end;
+            font-size: 11px;
+            font-weight: 700;
+            background: var(--brand-blue);
+            color: #ffffff;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(9, 96, 235, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Sub-caption inside cards */
+        .step-sub-caption {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin: 10px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Connector Arrow matching light theme */
+        .connector-arrow {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .connector-arrow svg {
+            width: 24px;
+            height: 24px;
+            filter: drop-shadow(0 2px 4px rgba(9, 96, 235, 0.15));
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* Summary Stats/Highlights Section */
+        .highlights-section {
+            width: 710px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 30px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 25px rgba(9, 96, 235, 0.03);
+            margin: 10px 0 40px 0;
+            text-align: center;
+        }
+
+        .highlights-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .highlights-title span {
+            color: var(--brand-blue);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .highlight-item {
+            background: var(--light-blue);
+            border: 1px solid rgba(9, 96, 235, 0.05);
+            border-radius: 16px;
+            padding: 18px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .highlight-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .highlight-label {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin-bottom: 4px;
+        }
+
+        .highlight-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Footer Section */
+        .footer-section {
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .notice-container {
+            width: 710px;
+            background-color: var(--light-orange);
+            border: 1px solid rgba(248, 168, 37, 0.2);
+            border-radius: 20px;
+            padding: 24px;
+            box-sizing: border-box;
+            text-align: left;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(248, 168, 37, 0.02);
+        }
+
+        .notice-header {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--brand-orange);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .notice-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .notice-list li {
+            margin-bottom: 8px;
+        }
+
+        .notice-list li strong {
+            color: var(--text-dark);
+        }
+
+        .footer-tagline {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--brand-blue);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.8;
+        }
+
+        .footer-brand-logo {
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(9, 96, 235, 0.08);
+        }
+
+        .footer-brand-cloud {
+            width: 20px;
+            height: 14px;
+            background: linear-gradient(135deg, #0960eb, #0044cc);
+            border-radius: 7px;
+            position: absolute;
+            top: 9px;
+            left: 6px;
+        }
+
+        .footer-brand-prompt {
+            position: absolute;
+            color: #ffffff;
+            font-family: monospace;
+            font-size: 8px;
+            font-weight: 900;
+            top: 12px;
+            left: 10px;
+        }
+
+        .footer-brand-text {
+            color: var(--brand-blue);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- Header -->
+    <div class="header-section">
+        <div class="logo-container">
+            <div class="codex-logo"></div>
+        </div>
+        <div class="header-badge">⭐ Codex 专用 Skills 部署集成指南</div>
+        <h1 class="title-h1">CodeX 技能资产包极速安装</h1>
+        <p class="title-sub">800+ 接口与 API 外部 MCP 集成 · 开箱即用 · 智能匹配</p>
+        
+        <div class="feature-pills">
+            <div class="pill-item">⚡ 导入用时：<span>&lt; 1 分钟</span></div>
+            <div class="pill-item">⚙️ 安装配置：<span>拖拽发送即装</span></div>
+            <div class="pill-item">🤖 支持版本：<span>CodeX 5.5 +</span></div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Steps -->
+    <div class="steps-container">
+
+        <!-- Step 1 -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number-badge">01</div>
+                <div class="step-title-text">导入并部署技能压缩包</div>
+                <div class="step-action-tag">第一步</div>
+            </div>
+            <p class="step-description">
+                1. 购买并下载技能包压缩文件 <strong>codex-skills-pack-zh.zip</strong>。<br>
+                2. 打开 CodeX 聊天框，点击左下角 <strong>“+”</strong> 按钮，在弹出的菜单中选择 <strong>“添加照片和文件”</strong>，将 ZIP 压缩包上传。<br>
+                3. 上传完成后，<strong>必须在输入框中同时输入下方的解压提示词</strong>，然后发送给 CodeX。
+            </p>
+            
+            <!-- Prompt box placed prominently in Step 1 -->
+            <div class="prompt-highlight-box">
+                <div class="prompt-label">💡 请在此步骤发送以下提示词进行部署：</div>
+                <div class="prompt-text">解压该技能压缩包，作为codex技能skills仓库。</div>
+                <div class="prompt-copy-btn">📋 复制该提示词</div>
+            </div>
+
+            <div class="step-sub-caption">📸 实际操作过程截图参考：</div>
+
+            <div class="step1-grid">
+                <!-- Sub Step 1-A -->
+                <div class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dots">
+                            <div class="browser-dot dot-red"></div>
+                            <div class="browser-dot dot-yellow"></div>
+                            <div class="browser-dot dot-green"></div>
+                        </div>
+                        <div class="browser-title-bar">Menu Options</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="step1_menu.png" alt="Open Menu">
+                    </div>
+                </div>
+
+                <!-- Sub Step 1-B -->
+                <div class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dots">
+                            <div class="browser-dot dot-red"></div>
+                            <div class="browser-dot dot-yellow"></div>
+                            <div class="browser-dot dot-green"></div>
+                        </div>
+                        <div class="browser-title-bar">ZIP Attached</div>
+                    </div>
+                    <div class="browser-content">
+                        <img src="step1_attached.png" alt="Attached ZIP">
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-sub-caption">📸 部署成功后的 CodeX 返回结果：</div>
+            
+            <div class="browser-mockup" style="margin-bottom: 0;">
+                <div class="browser-bar">
+                    <div class="browser-dots">
+                        <div class="browser-dot dot-red"></div>
+                        <div class="browser-dot dot-yellow"></div>
+                        <div class="browser-dot dot-green"></div>
+                    </div>
+                    <div class="browser-title-bar">Unzip Output Result</div>
+                </div>
+                <div class="browser-content">
+                    <img src="step1_unzipped.png" alt="Unzipped result">
+                </div>
+            </div>
+        </div>
+
+        <!-- Connector Arrow -->
+        <div class="connector-arrow">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="#0960eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number-badge">02</div>
+                <div class="step-title-text">输入开发需求，智能自动加载</div>
+                <div class="step-action-tag">第二步</div>
+            </div>
+            <p class="step-description">
+                集成完成后，您即可直接用自然语言描述开发目标。例如输入下方的『示例提示词』。CodeX 会在刚刚解压的 50+ 本地核心分类技能及 800+ 外部接口中 <strong>自动检索并匹配最佳技能组合</strong>，为您进行自动化工作流程推荐。
+            </p>
+            
+            <!-- Prompt box placed prominently in Step 2 -->
+            <div class="prompt-highlight-box">
+                <div class="prompt-label">💡 输入示例提示词进行测试：</div>
+                <div class="prompt-text">我要设计一个网站，请先从仓库中寻找合适的技能，然后再开始</div>
+                <div class="prompt-copy-btn">📋 复制该提示词</div>
+            </div>
+
+            <div class="step-sub-caption">📸 实际运行及智能检索反馈截图：</div>
+
+            <div class="browser-mockup" style="margin-bottom: 0;">
+                <div class="browser-bar">
+                    <div class="browser-dots">
+                        <div class="browser-dot dot-red"></div>
+                        <div class="browser-dot dot-yellow"></div>
+                        <div class="browser-dot dot-green"></div>
+                    </div>
+                    <div class="browser-title-bar">AI Auto Retrieval & Match</div>
+                </div>
+                <div class="browser-content">
+                    <img src="step2_retrieved.png" alt="Auto match skills">
+                </div>
+            </div>
+        </div>
+
+        <!-- Highlights Features Box -->
+        <div class="highlights-section">
+            <div class="highlights-title">🚀 为什么选择 <span>CodeX 技能整合包</span>？</div>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">🤖</div>
+                    <div class="highlight-label">AI 自动匹配</div>
+                    <div class="highlight-desc">无需人肉挑选技能，CodeX 自动语义索引加载</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">⚡</div>
+                    <div class="highlight-label">解压即可连</div>
+                    <div class="highlight-desc">无需任何复杂配置文件或环境变量</div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">💼</div>
+                    <div class="highlight-label">全场景覆盖</div>
+                    <div class="highlight-desc">支持 800+ 接口与 API 及外部 MCP 服务</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-section">
+        <!-- Purchase Notice -->
+        <div class="notice-container">
+            <div class="notice-header">⚠️ 购买须知与服务边界</div>
+            <ul class="notice-list">
+                <li>本商品为<strong>虚拟服务软件整合包</strong>，属非实体物品。下单发货后因其可复制性，不支持无理由退货、退款。</li>
+                <li>本产品为 <strong>50+ 本地核心分类技能，并支持 800+ 外部 MCP 接口与 API 集成服务包</strong>，供 CodeX 智能体导入自动加载。</li>
+                <li>实际智能技能的最终执行效果（如网页生成质量、API 访问速度）取决于您本地 CodeX 环境及大模型服务稳定性。</li>
+            </ul>
+        </div>
+
+        <div class="footer-tagline">— 让您的 CodeX 智能体更聪明、更能干 —</div>
+        
+        <div class="footer-brand">
+            <div class="footer-brand-logo">
+                <div class="footer-brand-cloud"></div>
+                <div class="footer-brand-prompt">&gt;_</div>
+            </div>
+            <span class="footer-brand-text">CodeX Skills 极速集成指南</span>
+        </div>
+    </div>
+</body>
+</html>
