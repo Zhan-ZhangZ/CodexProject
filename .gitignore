@@ -43,3 +43,5 @@ node_modules/
 # Local IDE configuration
 .agents/
 
+# Passwords
+密码区/
