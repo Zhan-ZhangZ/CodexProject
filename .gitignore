@@ -40,3 +40,6 @@ yarn-error.log*
 # Node packages
 node_modules/
 
+# Local IDE configuration
+.agents/
+
