@@ -588,6 +588,20 @@
     "relative_path": "./46_小红书热门营销文案与自动化控制小红书账号"
   },
   {
+    "name": "mediacrawler",
+    "description": "多平台社交媒体数据爬虫技能，支持小红书、抖音、快手、B站、微博、贴吧、知乎的数据（帖子、视频、评论）爬取，使用 Playwright 自动化技术，支持扫码登录/Cookie 复用，能规避平台反爬。",
+    "category": "46_小红书热门营销文案与自动化控制小红书账号",
+    "folder": "MediaCrawler",
+    "relative_path": "./46_小红书热门营销文案与自动化控制小红书账号/MediaCrawler"
+  },
+  {
+    "name": "xhs-visual-director",
+    "description": "小红书视觉导演技能，辅助设计与编排小红书爆款图文视觉结构及文案排版。",
+    "category": "46_小红书热门营销文案与自动化控制小红书账号",
+    "folder": "xhs-visual-director-skill",
+    "relative_path": "./46_小红书热门营销文案与自动化控制小红书账号/xhs-visual-director-skill"
+  },
+  {
     "name": "generative-media-skills",
     "description": "AI 视频生成工具箱，覆盖图片、视频和音频生成，可以调用 AI 模型制作产品广告、UGC 视频、音乐视频和社交媒体短片。部分功能需要配置 MuAPI，并会产生生成费用。",
     "category": "47_视频制作与剪辑",
