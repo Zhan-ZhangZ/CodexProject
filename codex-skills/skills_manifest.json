@@ -105,6 +105,13 @@
     "relative_path": "./06_智能体框架与协同/vibe-skills"
   },
   {
+    "name": "mattpocock-skills",
+    "description": "由 TypeScript 著名开发者 Matt Pocock 设计的模块化、可复用 AI Agent 调试与工程开发工作流技能包，涵盖 TDD、需求澄清（grilling）、代码库架构审计、合并冲突解决等高级工程规范。",
+    "category": "06_智能体框架与协同",
+    "folder": "mattpocock-skills",
+    "relative_path": "./06_智能体框架与协同/mattpocock-skills"
+  },
+  {
     "name": "gh-fix-ci",
     "description": "Inspect GitHub PR checks with gh, pull failing GitHub Actions logs, summarize failure context, then create a fix plan and implement after user approval. Use when a user asks to debug or fix failing PR CI/CD checks on GitHub Actions and wants a plan + code changes; for external checks (e.g., Buildkite), only report the details URL and mark them out of scope.",
     "category": "07_GitHub与PR自动化",
