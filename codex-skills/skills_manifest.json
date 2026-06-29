@@ -112,6 +112,13 @@
     "relative_path": "./06_智能体框架与协同/mattpocock-skills"
   },
   {
+    "name": "agent-reach",
+    "description": "免 API 密钥的 16+ 平台数据抓取与 Exa 搜索工具，支持获取推特、小红书、微博、YouTube等媒体的内容与字幕。",
+    "category": "06_智能体框架与协同",
+    "folder": "agent-reach",
+    "relative_path": "./06_智能体框架与协同/agent-reach"
+  },
+  {
     "name": "gh-fix-ci",
     "description": "Inspect GitHub PR checks with gh, pull failing GitHub Actions logs, summarize failure context, then create a fix plan and implement after user approval. Use when a user asks to debug or fix failing PR CI/CD checks on GitHub Actions and wants a plan + code changes; for external checks (e.g., Buildkite), only report the details URL and mark them out of scope.",
     "category": "07_GitHub与PR自动化",
@@ -525,6 +532,13 @@
     "relative_path": "./42_视频下载与离线整理/离线视频下载器"
   },
   {
+    "name": "cinema-manager",
+    "description": "个人影音库管理与搜索工具，支持根据分辨率/音轨/字幕排序筛选影视资源、自动转存夸克网盘、按 Plex/Infuse 标准重命名与分类归档。",
+    "category": "42_视频下载与离线整理",
+    "folder": "cinema-manager",
+    "relative_path": "./42_视频下载与离线整理/cinema-manager"
+  },
+  {
     "name": "theme-factory",
     "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
     "category": "43_主题色与设计Token配置",
@@ -796,6 +810,13 @@
     "category": "51_工业设计与CAD画图",
     "folder": "openscad-mcp",
     "relative_path": "./51_工业设计与CAD画图/openscad-mcp"
+  },
+  {
+    "name": "text-to-cad",
+    "description": "基于 Python 脚本与 build123d 引擎的参数化 3D CAD 建模协助工具，支持生成并导出 STEP, STL, GLB, URDF 等工业格式。",
+    "category": "51_工业设计与CAD画图",
+    "folder": "text-to-cad",
+    "relative_path": "./51_工业设计与CAD画图/text-to-cad"
   },
   {
     "name": "yuandian-mcp-server",
