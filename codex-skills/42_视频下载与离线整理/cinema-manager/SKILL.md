@@ -1,6 +1,6 @@
 ---
 name: cinema-manager
-description: "Hermes Agent skill for personal media library management. Automatically searches for movie and TV show resources, ranks and filters them based on resolution, HDR, audio quality, and codecs, auto-saves to Quark cloud drive, and organizes filenames into Plex/Infuse compatible formats."
+description: "个人影音库管理与搜索工具，支持根据分辨率/音轨/字幕排序筛选影视资源、自动转存夸克网盘、按 Plex/Infuse 标准重命名与分类归档。"
 ---
 
 # Cinema Manager 🎬

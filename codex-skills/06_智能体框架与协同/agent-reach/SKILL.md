@@ -1,6 +1,6 @@
 ---
 name: agent-reach
-description: "Unified, API-key-free web and social media scraper and search helper for agents. Access real-time search and read content from 16+ platforms (Twitter/X, Reddit, XiaoHongShu, Weibo, YouTube, Bilibili, Douyin, etc.) using lightweight cookie-based routing and fallbacks."
+description: "免 API 密钥的 16+ 平台数据抓取与 Exa 搜索工具，支持获取推特、小红书、微博、YouTube等媒体的内容与字幕。"
 ---
 
 # Agent-Reach 🌐

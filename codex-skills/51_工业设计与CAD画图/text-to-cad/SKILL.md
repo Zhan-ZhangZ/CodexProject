@@ -1,6 +1,6 @@
 ---
 name: text-to-cad
-description: "Parametric 3D CAD modeling helper for coding agents. Write, execute, and iterate on Python scripts (using the build123d library and OpenCascade kernel) to generate 3D geometry from natural language prompts, and export models as STEP, STL, GLB, and URDF."
+description: "基于 Python 脚本与 build123d 引擎的参数化 3D CAD 建模协助工具，支持生成并导出 STEP, STL, GLB, URDF 等工业格式。"
 ---
 
 # Text-to-CAD 📐
