@@ -245,13 +245,6 @@
         "relative_path": "./41_图像增强与GIF制作/Slack-GIF动态图生成器"
     },
     {
-        "name": "youtube-downloader",
-        "description": "Download YouTube videos with customizable quality and format options. Use this skill when the user asks to download, save, or grab YouTube videos. Supports various quality settings (best, 1080p, 720p, 480p, 360p), multiple formats (mp4, webm, mkv), and audio-only downloads as MP3.",
-        "category": "42_视频下载与离线整理",
-        "folder": "离线视频下载器",
-        "relative_path": "./42_视频下载与离线整理/离线视频下载器"
-    },
-    {
         "name": "cinema-manager",
         "description": "个人影音库管理与搜索工具，支持根据分辨率/音轨/字幕排序筛选影视资源、自动转存夸克网盘、按 Plex/Infuse 标准重命名与分类归档。",
         "category": "42_视频下载与离线整理",
