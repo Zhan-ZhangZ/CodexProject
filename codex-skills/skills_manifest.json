@@ -1055,5 +1055,33 @@
     "category": "54_跨境电商与店铺管理",
     "folder": "Amazon-Skills",
     "relative_path": "./54_跨境电商与店铺管理/Amazon-Skills"
+  },
+  {
+    "name": "canghe-douyin-downloader",
+    "description": "抖音无水印视频下载与音频提取，支持基于硅基流动 API 从视频中一键提取语音文案。",
+    "category": "42_视频下载与离线整理",
+    "folder": "canghe-douyin-downloader",
+    "relative_path": "./42_视频下载与离线整理/canghe-douyin-downloader"
+  },
+  {
+    "name": "canghe-tianyancha",
+    "description": "基于大模型并行搜索的企业洞察看板生成工具。输入企业或行业名称，自动生成包含工商、司法风险、在招岗位及知识产权在内的单文件 HTML 仪表板。",
+    "category": "25_内容调研与写作",
+    "folder": "canghe-tianyancha",
+    "relative_path": "./25_内容调研与写作/canghe-tianyancha"
+  },
+  {
+    "name": "canghe-manga-style-video",
+    "description": "漫画风格视频生成器，支持基于火山引擎 Ark API 生成日式、国风、美式卡通等 8 种漫画风格的视频。",
+    "category": "47_视频制作与剪辑",
+    "folder": "canghe-manga-style-video",
+    "relative_path": "./47_视频制作与剪辑/canghe-manga-style-video"
+  },
+  {
+    "name": "paddleocr-doc-parsing",
+    "description": "基于 PaddleOCR 的高级文档结构解析工具，支持提取文本、表格（带 HTML/Markdown 结构）、公式及图表的排版布局信息。",
+    "category": "49_万能文档与格式转换",
+    "folder": "paddleocr-doc-parsing",
+    "relative_path": "./49_万能文档与格式转换/paddleocr-doc-parsing"
   }
 ]
