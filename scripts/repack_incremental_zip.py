@@ -21,7 +21,7 @@ SOURCE_DIR = os.path.join(PARENT_DIR, 'codex-skills')
 BACKUP_DIR = os.path.join(PARENT_DIR, 'backups')
 INCREMENTAL_DIR = os.path.join(PARENT_DIR, 'incremental_packs')
 
-EXCLUDE_DIRS = {'.git', '.github', '__pycache__', 'node_modules', '.DS_Store', '__MACOSX', '.vscode', '.idea'}
+EXCLUDE_DIRS = {'.git', '.github', '__pycache__', 'node_modules', '.DS_Store', '__MACOSX', '.vscode', '.idea', '15_社科研究与实证工具'}
 EXCLUDE_FILES = {'.DS_Store'}
 
 def should_exclude(path):
