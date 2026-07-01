@@ -1216,5 +1216,12 @@
         "category": "03_效率工具与协同管理",
         "folder": "ai-radar",
         "relative_path": "./03_效率工具与协同管理/ai-news-radar/skills/radar"
+    },
+    {
+        "name": "mattpocock-skills",
+        "description": "Matt Pocock 构建的 Agentic Skills 生态。包含测试驱动开发 (TDD)、需求访谈 (/grill-with-docs) 以及顶级的元技能编写指南 (writing-great-skills)，通过注入软件工程准则降低 AI 鲁莽行为，并极大提升流程的可预测性。",
+        "category": "12_Skill开发脚手架与安装器",
+        "folder": "mattpocock-skills",
+        "relative_path": "./12_Skill开发脚手架与安装器/mattpocock-skills"
     }
 ]
