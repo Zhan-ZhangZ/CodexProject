@@ -1,1136 +1,1171 @@
 [
-    {
-        "name": "LLM-based-Multi-Agent-System-Architecture-Design-and-Project-Code-Practice",
-        "description": "LLM-based Multi-Agent 系统架构设计与项目代码实践",
-        "category": "01_代码工程与架构",
-        "folder": "LLM-based-Multi-Agent-System-Architecture-Design-and-Project-Code-Practice",
-        "relative_path": "./01_代码工程与架构/LLM-based-Multi-Agent-System-Architecture-Design-and-Project-Code-Practice"
-    },
-    {
-        "name": "bringyour-migration-auditor",
-        "description": "Audit Claude Code to Codex harness migrations, including AGENTS.md/CLAUDE.md scope, hooks, MCP config, skills, secrets, and validation notes. Use after a Codex import or Bring Your AI migration before letting Codex edit code.",
-        "category": "01_代码工程与架构",
-        "folder": "bringyour-migration-auditor",
-        "relative_path": "./01_代码工程与架构/bringyour-migration-auditor"
-    },
-    {
-        "name": "brooks-lint",
-        "description": "基于六本经典软件工程书籍的 AI 代码评审工具 —— 提供包含书籍引用、严重程度标签以及四种分析模式（PR 评审、架构审计、技术债、测试质量）的系统退化风险诊断。",
-        "category": "01_代码工程与架构",
-        "folder": "brooks-lint",
-        "relative_path": "./01_代码工程与架构/brooks-lint"
-    },
-    {
-        "name": "codebase-migrate",
-        "description": "Run large codebase migrations and multi-file refactors. Uses the Composio CLI to coordinate issue tracking, batched PRs, and CI verification while the agent executes the transforms locally across hundreds of files.",
-        "category": "01_代码工程与架构",
-        "folder": "代码库迁移与重构工具",
-        "relative_path": "./01_代码工程与架构/代码库迁移与重构工具"
-    },
-    {
-        "name": "codebase-recon",
-        "description": "Use when entering an unfamiliar codebase, onboarding to a new project, or wanting to assess codebase health before reading code — analyzes git history to reveal hotspots, risk areas, team structure, and development momentum\n",
-        "category": "01_代码工程与架构",
-        "folder": "codebase-recon",
-        "relative_path": "./01_代码工程与架构/codebase-recon"
-    },
-    {
-        "name": "create-plan",
-        "description": "Create a concise plan. Use when a user explicitly asks for a plan related to a coding task.",
-        "category": "01_代码工程与架构",
-        "folder": "开发计划制定器",
-        "relative_path": "./01_代码工程与架构/开发计划制定器"
-    },
-    {
-        "name": "git-workflow-skill",
-        "description": "Agent Skill for Git workflow best practices - branching, commits, PR workflows | Claude Code compatible",
-        "category": "01_代码工程与架构",
-        "folder": "git-workflow-skill",
-        "relative_path": "./01_代码工程与架构/git-workflow-skill"
-    },
-    {
-        "name": "planning-with-files",
-        "description": "让 Codex 用 Markdown 文件记录计划、进度和上下文。适合长期项目，避免聊着聊着忘记前面做过什么。",
-        "category": "01_代码工程与架构",
-        "folder": "planning-with-files",
-        "relative_path": "./01_代码工程与架构/planning-with-files"
-    },
-    {
-        "name": "sentry-triage",
-        "description": "Diagnose Sentry issues without copy-pasting stack traces. Uses the Composio CLI to pull issue details, events, breadcrumbs, and suspect commits, then maps the frames to local source so the agent can propose a fix directly.",
-        "category": "01_代码工程与架构",
-        "folder": "Sentry错误定位工具",
-        "relative_path": "./01_代码工程与架构/Sentry错误定位工具"
-    },
-    {
-        "name": "superpowers",
-        "description": "让 Codex 像严格工程师一样干活：先写测试，再写代码，还会主动做代码检查，减少\"看起来能跑、实际有坑\"的情况。",
-        "category": "01_代码工程与架构",
-        "folder": "superpowers",
-        "relative_path": "./01_代码工程与架构/superpowers"
-    },
-    {
-        "name": "vercel-agent-skills",
-        "description": "Vercel 官方的网页开发检查规则，特别适合 React 和前端项目。帮你检查页面性能、结构、可访问性和工程规范。",
-        "category": "01_代码工程与架构",
-        "folder": "vercel-agent-skills",
-        "relative_path": "./01_代码工程与架构/vercel-agent-skills"
-    },
-    {
-        "name": "datadog-logs",
-        "description": "Query and filter Datadog logs from the shell using the Composio CLI. Run scoped log searches, pivot across services/environments, and export structured JSON for downstream agents instead of click-driving the Datadog UI.",
-        "category": "02_DevOps与自动化",
-        "folder": "Datadog日志筛选器",
-        "relative_path": "./02_DevOps与自动化/Datadog日志筛选器"
-    },
-    {
-        "name": "deploy-pipeline",
-        "description": "Run end-to-end deploy pipelines across Stripe, Supabase, and Vercel using the Composio CLI. Promote Stripe products, push Supabase migrations, ship Vercel deployments, and verify with post-deploy checks — all from one script.",
-        "category": "02_DevOps与自动化",
-        "folder": "部署流水线工具",
-        "relative_path": "./02_DevOps与自动化/部署流水线工具"
-    },
-    {
-        "name": "gh-address-comments",
-        "description": "Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in.",
-        "category": "02_DevOps与自动化",
-        "folder": "GitHub-PR评论处理器",
-        "relative_path": "./02_DevOps与自动化/GitHub-PR评论处理器"
-    },
-    {
-        "name": "gh-fix-ci",
-        "description": "Inspect GitHub PR checks with gh, pull failing GitHub Actions logs, summarize failure context, then create a fix plan and implement after user approval. Use when a user asks to debug or fix failing PR CI/CD checks on GitHub Actions and wants a plan + code changes; for external checks (e.g., Buildkite), only report the details URL and mark them out of scope.",
-        "category": "02_DevOps与自动化",
-        "folder": "GitHub-CI错误修复器",
-        "relative_path": "./02_DevOps与自动化/GitHub-CI错误修复器"
-    },
-    {
-        "name": "langsmith-fetch",
-        "description": "Debug LangChain and LangGraph agents by fetching execution traces from LangSmith Studio. Use when debugging agent behavior, investigating errors, analyzing tool calls, checking memory operations, or examining agent performance. Automatically fetches recent traces and analyzes execution patterns. Requires langsmith-fetch CLI installed.",
-        "category": "02_DevOps与自动化",
-        "folder": "LangSmith数据抓取器",
-        "relative_path": "./02_DevOps与自动化/LangSmith数据抓取器"
-    },
-    {
-        "name": "mcp-github-pr-issue-analyser",
-        "description": "A Model Context Protocol (MCP) application for automated GitHub PR analysis and issue management.",
-        "category": "02_DevOps与自动化",
-        "folder": "mcp-github-pr-issue-analyser",
-        "relative_path": "./02_DevOps与自动化/mcp-github-pr-issue-analyser"
-    },
-    {
-        "name": "pr-review-ci-fix",
-        "description": "Automated PR review and CI auto-fix for GitHub and GitLab using the Composio CLI. Pulls diffs, fetches failing job logs, posts review comments, and loops fix commits until checks go green.",
-        "category": "02_DevOps与自动化",
-        "folder": "PR评审与CI自动修复器",
-        "relative_path": "./02_DevOps与自动化/PR评审与CI自动修复器"
-    },
-    {
-        "name": "webapp-testing",
-        "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
-        "category": "02_DevOps与自动化",
-        "folder": "网页自动化测试器",
-        "relative_path": "./02_DevOps与自动化/网页自动化测试器"
-    },
-    {
-        "name": "File-Organizer-MCP",
-        "description": "This MCP server will organize your files using connections to MCP using clients like Claude, Cursor and Gemini Cli",
-        "category": "03_效率工具与协同管理",
-        "folder": "File-Organizer-MCP",
-        "relative_path": "./03_效率工具与协同管理/File-Organizer-MCP"
-    },
-    {
-        "name": "defuddle",
-        "description": "智能清理网页中的广告、导航栏和无用代码，为知识库生成干净、高可读性、节省 Token 的 Markdown 文档。",
-        "category": "03_效率工具与协同管理",
-        "folder": "defuddle",
-        "relative_path": "./03_效率工具与协同管理/defuddle"
-    },
-    {
-        "name": "file-organizer",
-        "description": "Intelligently organizes your files and folders across your computer by understanding context, finding duplicates, suggesting better structures, and automating cleanup tasks. Reduces cognitive load and keeps your digital workspace tidy without manual effort.",
-        "category": "03_效率工具与协同管理",
-        "folder": "工作区文件整理器",
-        "relative_path": "./03_效率工具与协同管理/工作区文件整理器"
-    },
-    {
-        "name": "hk-finance-mcp-server",
-        "description": "An MCP server that provides access to finance related data in Hong Kong through a FastMCP interface.",
-        "category": "03_效率工具与协同管理",
-        "folder": "hk-finance-mcp-server",
-        "relative_path": "./03_效率工具与协同管理/hk-finance-mcp-server"
-    },
-    {
-        "name": "internal-comms",
-        "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
-        "category": "03_效率工具与协同管理",
-        "folder": "内部沟通文案撰写器",
-        "relative_path": "./03_效率工具与协同管理/内部沟通文案撰写器"
-    },
-    {
-        "name": "invoice-organizer",
-        "description": "Automatically organizes invoices and receipts for tax preparation by reading messy files, extracting key information, renaming them consistently, and sorting them into logical folders. Turns hours of manual bookkeeping into minutes of automated organization.",
-        "category": "03_效率工具与协同管理",
-        "folder": "财务发票整理器",
-        "relative_path": "./03_效率工具与协同管理/财务发票整理器"
-    },
-    {
-        "name": "issue-triage",
-        "description": "Triage Linear or Jira backlogs and run bug sweeps via the Composio CLI. Bulk-fetch issues, dedupe, relabel, reassign, and post summaries — all from the shell without clicking through the UI.",
-        "category": "03_效率工具与协同管理",
-        "folder": "工单分流整理器",
-        "relative_path": "./03_效率工具与协同管理/工单分流整理器"
-    },
-    {
-        "name": "json-canvas",
-        "description": "支持 Obsidian 空间思维导图（.canvas 文件）的读取与编辑，使 AI 能够绘制或修改可视化的思维图谱。",
-        "category": "03_效率工具与协同管理",
-        "folder": "json-canvas",
-        "relative_path": "./03_效率工具与协同管理/json-canvas"
-    },
-    {
-        "name": "linear",
-        "description": "Manage issues, projects & team workflows in Linear. Use when the user wants to read, create or updates tickets in Linear.",
-        "category": "03_效率工具与协同管理",
-        "folder": "Linear项目管理工具",
-        "relative_path": "./03_效率工具与协同管理/Linear项目管理工具"
-    },
-    {
-        "name": "mcp-linear",
-        "description": "MCP server that enables AI assistants to interact with Linear project management system through natural language",
-        "category": "03_效率工具与协同管理",
-        "folder": "mcp-linear",
-        "relative_path": "./03_效率工具与协同管理/mcp-linear"
-    },
-    {
-        "name": "meeting-insights-analyzer",
-        "description": "Analyzes meeting transcripts and recordings to uncover behavioral patterns, communication insights, and actionable feedback. Identifies when you avoid conflict, use filler words, dominate conversations, or miss opportunities to listen. Perfect for professionals seeking to improve their communication and leadership skills.",
-        "category": "03_效率工具与协同管理",
-        "folder": "会议纪要洞察分析器",
-        "relative_path": "./03_效率工具与协同管理/会议纪要洞察分析器"
-    },
-    {
-        "name": "meeting-notes-and-actions",
-        "description": "Turn meeting transcripts or rough notes into crisp summaries with decisions, risks, and owner-tagged action items; use for Zoom/Meet/Teams transcripts, call notes, or long meeting chats to generate share-ready outputs.",
-        "category": "03_效率工具与协同管理",
-        "folder": "会议纪要与行动项生成器",
-        "relative_path": "./03_效率工具与协同管理/会议纪要与行动项生成器"
-    },
-    {
-        "name": "notion-knowledge-capture",
-        "description": "Capture conversations and decisions into structured Notion pages; use when turning chats/notes into wiki entries, how-tos, decisions, or FAQs with proper linking.",
-        "category": "03_效率工具与协同管理",
-        "folder": "Notion知识库捕获器",
-        "relative_path": "./03_效率工具与协同管理/Notion知识库捕获器"
-    },
-    {
-        "name": "notion-meeting-intelligence",
-        "description": "Prepare meeting materials with Notion context and Codex research; use when gathering context, drafting agendas/pre-reads, and tailoring materials to attendees.",
-        "category": "03_效率工具与协同管理",
-        "folder": "Notion会议智能助手",
-        "relative_path": "./03_效率工具与协同管理/Notion会议智能助手"
-    },
-    {
-        "name": "notion-research-documentation",
-        "description": "Research across Notion and synthesize into structured documentation; use when gathering info from multiple Notion sources to produce briefs, comparisons, or reports with citations.",
-        "category": "03_效率工具与协同管理",
-        "folder": "Notion文献调研工具",
-        "relative_path": "./03_效率工具与协同管理/Notion文献调研工具"
-    },
-    {
-        "name": "notion-spec-to-implementation",
-        "description": "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them.",
-        "category": "03_效率工具与协同管理",
-        "folder": "Notion规格说明转执行工具",
-        "relative_path": "./03_效率工具与协同管理/Notion规格说明转执行工具"
-    },
-    {
-        "name": "obsidian-bases",
-        "description": "处理 Obsidian 的数据库层（.base 文件），支持在 Vault 中进行结构化数据的读写与关系管理。",
-        "category": "03_效率工具与协同管理",
-        "folder": "obsidian-bases",
-        "relative_path": "./03_效率工具与协同管理/obsidian-bases"
-    },
-    {
-        "name": "obsidian-cli",
-        "description": "通过命令行或快捷方式直接与本地 Obsidian 库进行交互，支持搜索、打开和管理笔记库。",
-        "category": "03_效率工具与协同管理",
-        "folder": "obsidian-cli",
-        "relative_path": "./03_效率工具与协同管理/obsidian-cli"
-    },
-    {
-        "name": "obsidian-markdown",
-        "description": "确保 wikilink、frontmatter 和 tag 格式符合 Obsidian 规范，避免 AI 破坏 Obsidian 独有的链接和元数据结构。",
-        "category": "03_效率工具与协同管理",
-        "folder": "obsidian-markdown",
-        "relative_path": "./03_效率工具与协同管理/obsidian-markdown"
-    },
-    {
-        "name": "obsidian-vault-mcp",
-        "description": "MCP tool allowing Open WebUI or Claude Desktop to retrieve files from your vault",
-        "category": "03_效率工具与协同管理",
-        "folder": "obsidian-vault-mcp",
-        "relative_path": "./03_效率工具与协同管理/obsidian-vault-mcp"
-    },
-    {
-        "name": "skill-share",
-        "description": "A skill that creates new Claude skills and automatically shares them on Slack using Rube for seamless team collaboration and skill discovery.",
-        "category": "03_效率工具与协同管理",
-        "folder": "技能共享与分发服务",
-        "relative_path": "./03_效率工具与协同管理/技能共享与分发服务"
-    },
-    {
-        "name": "support-ticket-triage",
-        "description": "Triage customer support tickets/emails/chats into categories, priority, and next action; draft responses and create reproducible steps; use for Zendesk/Intercom/Help Scout exports or pasted threads.",
-        "category": "03_效率工具与协同管理",
-        "folder": "客服工单分类自动回复器",
-        "relative_path": "./03_效率工具与协同管理/客服工单分类自动回复器"
-    },
-    {
-        "name": "canghe-tianyancha",
-        "description": "基于大模型并行搜索的企业洞察看板生成工具。输入企业或行业名称，自动生成包含工商、司法风险、在招岗位及知识产权在内的单文件 HTML 仪表板。",
-        "category": "04_内容创作与文档处理",
-        "folder": "canghe-tianyancha",
-        "relative_path": "./04_内容创作与文档处理/canghe-tianyancha"
-    },
-    {
-        "name": "changelog-generator",
-        "description": "Automatically creates user-facing changelogs from git commits by analyzing commit history, categorizing changes, and transforming technical commits into clear, customer-friendly release notes. Turns hours of manual changelog writing into minutes of automated generation.",
-        "category": "04_内容创作与文档处理",
-        "folder": "更新日志生成器",
-        "relative_path": "./04_内容创作与文档处理/更新日志生成器"
-    },
-    {
-        "name": "content-research-writer",
-        "description": "Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.",
-        "category": "04_内容创作与文档处理",
-        "folder": "内容调研与写作器",
-        "relative_path": "./04_内容创作与文档处理/内容调研与写作器"
-    },
-    {
-        "name": "dbskill",
-        "description": "内容创作者的\"选题诊断器\"。适合做内容诊断、商业表达、hook、小红书标题、爆款拆解，尤其适合中文自媒体和知识型创作者。",
-        "category": "04_内容创作与文档处理",
-        "folder": "dbskill",
-        "relative_path": "./04_内容创作与文档处理/dbskill"
-    },
-    {
-        "name": "diasporic-intelligence",
-        "description": "Use when writing, reviewing, citing, or implementing Diasporic Intelligence, a source-credited framework also described as Afrotemporalism in Action. Preserves source credit, consent governance, provenance, revocation, lineage boundaries, and the distinction from generic cultural AI, biometric extraction, and ancestor impersonation.",
-        "category": "04_内容创作与文档处理",
-        "folder": "diasporic-intelligence",
-        "relative_path": "./04_内容创作与文档处理/diasporic-intelligence"
-    },
-    {
-        "name": "email-draft-polish",
-        "description": "Draft, rewrite, or condense emails with target tone, length, and audience; use for cold outreach, replies, status updates, or escalations where clarity and brevity matter.",
-        "category": "04_内容创作与文档处理",
-        "folder": "邮件草稿润色器",
-        "relative_path": "./04_内容创作与文档处理/邮件草稿润色器"
-    },
-    {
-        "name": "humanize-text",
-        "description": "Free open-source AI text humanizer to convert AI-generated content into undetectable, human-like writing.",
-        "category": "04_内容创作与文档处理",
-        "folder": "humanize-text",
-        "relative_path": "./04_内容创作与文档处理/humanize-text"
-    },
-    {
-        "name": "humanizer-zh",
-        "description": "去除文本中的 AI 生成痕迹。适用于编辑或审阅文本，使其听起来更自然、更像人类书写。\n基于维基百科的\"AI 写作特征\"综合指南。检测并修复以下模式：夸大的象征意义、\n宣传性语言、以 -ing 结尾的肤浅分析、模糊的归因、破折号过度使用、三段式法则、\nAI 词汇、否定式排比、过多的连接性短语。\n",
-        "category": "04_内容创作与文档处理",
-        "folder": "humanizer-zh",
-        "relative_path": "./04_内容创作与文档处理/humanizer-zh"
-    },
-    {
-        "name": "khazix-skills",
-        "description": "适合公众号长文和万字研究报告。里面的写作流比较重，适合做 AI 热点分析、长文拆解、深度观点输出。",
-        "category": "04_内容创作与文档处理",
-        "folder": "khazix-skills",
-        "relative_path": "./04_内容创作与文档处理/khazix-skills"
-    },
-    {
-        "name": "markitdown",
-        "description": "微软官方万能文档与多媒体 Markdown 转换工具。支持 PDF、Word、Excel、PowerPoint、音视频转译、网页及 ZIP 归档文件的提取与 Markdown 转换。",
-        "category": "04_内容创作与文档处理",
-        "folder": "markitdown",
-        "relative_path": "./04_内容创作与文档处理/markitdown"
-    },
-    {
-        "name": "notebooklm",
-        "description": "Use this skill to query your Google NotebookLM notebooks directly from Claude Code for source-grounded, citation-backed answers from Gemini. Browser automation, library management, persistent auth. Drastically reduced hallucinations through document-only responses.",
-        "category": "04_内容创作与文档处理",
-        "folder": "notebooklm-skill",
-        "relative_path": "./04_内容创作与文档处理/notebooklm-skill"
-    },
-    {
-        "name": "novel-writing",
-        "description": "用于虚构文学创作规划、章节起草、场景续写与修改评审的 Codex 技能工具箱。",
-        "category": "04_内容创作与文档处理",
-        "folder": "novel-writing",
-        "relative_path": "./04_内容创作与文档处理/novel-writing"
-    },
-    {
-        "name": "paddleocr-doc-parsing",
-        "description": "基于 PaddleOCR 的高级文档结构解析工具，支持提取文本、表格（带 HTML/Markdown 结构）、公式及图表的排版布局信息。",
-        "category": "04_内容创作与文档处理",
-        "folder": "paddleocr-doc-parsing",
-        "relative_path": "./04_内容创作与文档处理/paddleocr-doc-parsing"
-    },
-    {
-        "name": "paperjsx",
-        "description": "Generate PPTX presentations, DOCX documents, XLSX spreadsheets, and PDF reports from structured JSON input using PaperJSX.",
-        "category": "04_内容创作与文档处理",
-        "folder": "PaperJSX报表自动生成器",
-        "relative_path": "./04_内容创作与文档处理/PaperJSX报表自动生成器"
-    },
-    {
-        "name": "spreadsheet-formula-helper",
-        "description": "Write and debug spreadsheet formulas (Excel/Google Sheets), pivot tables, and array formulas; translate between dialects; use when users need working formulas with examples and edge-case checks.",
-        "category": "04_内容创作与文档处理",
-        "folder": "电子表格公式助手",
-        "relative_path": "./04_内容创作与文档处理/电子表格公式助手"
-    },
-    {
-        "name": "tailored-resume-generator",
-        "description": "Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances",
-        "category": "04_内容创作与文档处理",
-        "folder": "定制化简历优化器",
-        "relative_path": "./04_内容创作与文档处理/定制化简历优化器"
-    },
-    {
-        "name": "unslop",
-        "description": "去除文本中 AI 写作腔调（如三列排比句、破折号泛滥、套话及迎合性开场白）的命令行及 MCP 工具。适配 Codex、Claude Code、Gemini CLI 与 Cursor，提供 5 档清理强度和只读审计模式。",
-        "category": "04_内容创作与文档处理",
-        "folder": "unslop",
-        "relative_path": "./04_内容创作与文档处理/unslop"
-    },
-    {
-        "name": "baoyu-skills",
-        "description": "中文内容创作者的视觉工具箱。封面图、信息图、结构图、图解都能做，适合文章包装和观点可视化。",
-        "category": "05_多媒体与设计资产",
-        "folder": "baoyu-skills",
-        "relative_path": "./05_多媒体与设计资产/baoyu-skills"
-    },
-    {
-        "name": "brand-guidelines",
-        "description": "Applies OpenAI's brand colors and typography to any artifact that should match the Codex/OpenAI look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
-        "category": "05_多媒体与设计资产",
-        "folder": "品牌设计规范",
-        "relative_path": "./05_多媒体与设计资产/品牌设计规范"
-    },
-    {
-        "name": "canghe-douyin-downloader",
-        "description": "抖音无水印视频下载与音频提取，支持基于硅基流动 API 从视频中一键提取语音文案。",
-        "category": "05_多媒体与设计资产",
-        "folder": "canghe-douyin-downloader",
-        "relative_path": "./05_多媒体与设计资产/canghe-douyin-downloader"
-    },
-    {
-        "name": "canghe-manga-style-video",
-        "description": "漫画风格视频生成器，支持基于火山引擎 Ark API 生成日式、国风、美式卡通等 8 种漫画风格的视频。",
-        "category": "05_多媒体与设计资产",
-        "folder": "canghe-manga-style-video",
-        "relative_path": "./05_多媒体与设计资产/canghe-manga-style-video"
-    },
-    {
-        "name": "canvas-design",
-        "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
-        "category": "05_多媒体与设计资产",
-        "folder": "画布设计",
-        "relative_path": "./05_多媒体与设计资产/画布设计"
-    },
-    {
-        "name": "cinema-manager",
-        "description": "个人影音库管理与搜索工具，支持根据分辨率/音轨/字幕排序筛选影视资源、自动转存夸克网盘、按 Plex/Infuse 标准重命名与分类归档。",
-        "category": "05_多媒体与设计资产",
-        "folder": "cinema-manager",
-        "relative_path": "./05_多媒体与设计资产/cinema-manager"
-    },
-    {
-        "name": "competitive-ads-extractor",
-        "description": "Extracts and analyzes competitors' ads from ad libraries (Facebook, LinkedIn, etc.) to understand what messaging, problems, and creative approaches are working. Helps inspire and improve your own ad campaigns.",
-        "category": "05_多媒体与设计资产",
-        "folder": "竞品广告提取器",
-        "relative_path": "./05_多媒体与设计资产/竞品广告提取器"
-    },
-    {
-        "name": "generative-media-skills",
-        "description": "AI 视频生成工具箱，覆盖图片、视频和音频生成，可以调用 AI 模型制作产品广告、UGC 视频、音乐视频和社交媒体短片。部分功能需要配置 MuAPI，并会产生生成费用。",
-        "category": "05_多媒体与设计资产",
-        "folder": "generative-media-skills",
-        "relative_path": "./05_多媒体与设计资产/generative-media-skills"
-    },
-    {
-        "name": "guizang-ppt-skill",
-        "description": "生成横向翻页网页 PPT（单 HTML 文件），含 WebGL 背景、章节幕封、数据大字报、图片网格等模板。提供两种风格：① \"电子杂志 × 电子墨水\"（衬线 + 流体背景 + 暖色） ② \"瑞士国际主义\"（无衬线 + 网格点阵 + IKB/柠檬黄/柠檬绿/安全橙高亮）。当用户需要制作分享 / 演讲 / 发布会风格的网页 PPT，或提到\"杂志风 PPT\"、\"瑞士风 PPT\"、\"Swiss Style\"、\"horizontal swipe deck\"时使用。",
-        "category": "05_多媒体与设计资产",
-        "folder": "guizang-ppt-skill",
-        "relative_path": "./05_多媒体与设计资产/guizang-ppt-skill"
-    },
-    {
-        "name": "guizang-social-card-skill",
-        "description": "Generate Guizang-style social card image sets and WeChat official account cover pairs from articles, scripts, screenshots, product notes, subtitles, or photos. Use when the user asks for 小红书图文, Rednote/Xiaohongshu images, social cards, carousel images, 3:4 covers, 微信公众号封面, WeChat 21:9 + 1:1 covers, Swiss Style, or magazine-style social images.",
-        "category": "05_多媒体与设计资产",
-        "folder": "guizang-social-card-skill",
-        "relative_path": "./05_多媒体与设计资产/guizang-social-card-skill"
-    },
-    {
-        "name": "html-anything",
-        "description": "把 Markdown、文案、文章变成好看的 HTML 页面、海报、卡片和 PNG。适合做杂志风文章、小红书卡片、知识卡片和分享图。",
-        "category": "05_多媒体与设计资产",
-        "folder": "html-anything",
-        "relative_path": "./05_多媒体与设计资产/html-anything"
-    },
-    {
-        "name": "hyperframes",
-        "description": "一句话生成动效视频。告诉 Codex 视频主题，它可以使用 HTML、CSS 和动画制作产品介绍、动态海报、知识视频和 PPT 风格视频，最后渲染为 MP4。很适合把文章、推文、产品介绍快速改成视频。",
-        "category": "05_多媒体与设计资产",
-        "folder": "hyperframes",
-        "relative_path": "./05_多媒体与设计资产/hyperframes"
-    },
-    {
-        "name": "ian-xiaohei-illustrations",
-        "description": "中文文章正文配图神器。不是随便生成一张图，而是把文章里的观点、流程、情绪、隐喻画成\"小黑\"风格插图。",
-        "category": "05_多媒体与设计资产",
-        "folder": "ian-xiaohei-illustrations",
-        "relative_path": "./05_多媒体与设计资产/ian-xiaohei-illustrations"
-    },
-    {
-        "name": "image-enhancer",
-        "description": "Improves the quality of images, especially screenshots, by enhancing resolution, sharpness, and clarity. Perfect for preparing images for presentations, documentation, or social media posts.",
-        "category": "05_多媒体与设计资产",
-        "folder": "图像无损增强器",
-        "relative_path": "./05_多媒体与设计资产/图像无损增强器"
-    },
-    {
-        "name": "lottie",
-        "description": "生成生产级 Lottie 动画。可以将文本提示语或设计需求直接转换为可交互、矢量无损的 Lottie 动效动画，适用于网页、App UI 交互及动态多媒体设计。",
-        "category": "05_多媒体与设计资产",
-        "folder": "lottie",
-        "relative_path": "./05_多媒体与设计资产/lottie"
-    },
-    {
-        "name": "mediacrawler",
-        "description": "多平台社交媒体数据爬虫技能，支持小红书、抖音、快手、B站、微博、贴吧、知乎的数据（帖子、视频、评论）爬取，使用 Playwright 自动化技术，支持扫码登录/Cookie 复用，能规避平台反爬。",
-        "category": "05_多媒体与设计资产",
-        "folder": "MediaCrawler",
-        "relative_path": "./05_多媒体与设计资产/MediaCrawler"
-    },
-    {
-        "name": "remotion-skills",
-        "description": "Remotion 官方提供的 Agent Skills。可以让 Codex 使用 React 编写视频，统一控制画面、字幕、动画和时间轴。特别适合批量制作排行榜、数据周报、产品更新和固定栏目视频。",
-        "category": "05_多媒体与设计资产",
-        "folder": "remotion-skills",
-        "relative_path": "./05_多媒体与设计资产/remotion-skills"
-    },
-    {
-        "name": "seedance-prompt-en",
-        "description": "Write effective prompts for Jimeng Seedance 2.0 multimodal AI video generation. Use when users want to create video prompts using text, images, videos, and audio inputs with the @ reference system. Covers camera movements, effects replication, video extension, editing, music beat-matching, e-commerce ads, short dramas, and educational content.",
-        "category": "05_多媒体与设计资产",
-        "folder": "seedance2-skill",
-        "relative_path": "./05_多媒体与设计资产/seedance2-skill"
-    },
-    {
-        "name": "slack-gif-creator",
-        "description": "Toolkit for creating animated GIFs optimized for Slack, with validators for size constraints and composable animation primitives. This skill applies when users request animated GIFs or emoji animations for Slack from descriptions like \"make me a GIF for Slack of X doing Y\".",
-        "category": "05_多媒体与设计资产",
-        "folder": "Slack-GIF动态图生成器",
-        "relative_path": "./05_多媒体与设计资产/Slack-GIF动态图生成器"
-    },
-    {
-        "name": "theme-factory",
-        "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
-        "category": "05_多媒体与设计资产",
-        "folder": "UI主题色工厂",
-        "relative_path": "./05_多媒体与设计资产/UI主题色工厂"
-    },
-    {
-        "name": "video-use",
-        "description": "Edit any video by conversation. Transcribe, cut, color grade, generate overlay animations, burn subtitles — for talking heads, montages, tutorials, travel, interviews. No presets, no menus. Ask questions, confirm the plan, execute, iterate, persist. Production-correctness rules are hard; everything else is artistic freedom.",
-        "category": "05_多媒体与设计资产",
-        "folder": "video-use",
-        "relative_path": "./05_多媒体与设计资产/video-use"
-    },
-    {
-        "name": "videocut-skills",
-        "description": "面向中文创作者的视频剪辑 Skills，可以让 Agent 理解剪辑需求，并协助处理素材、字幕和短视频制作流程。中文用户想用 Claude Code 或其他 Agent 剪视频的首选。",
-        "category": "05_多媒体与设计资产",
-        "folder": "videocut-skills",
-        "relative_path": "./05_多媒体与设计资产/videocut-skills"
-    },
-    {
-        "name": "xhs-visual-director",
-        "description": "小红书视觉导演技能，辅助设计与编排小红书爆款图文视觉结构及文案排版。",
-        "category": "05_多媒体与设计资产",
-        "folder": "xhs-visual-director-skill",
-        "relative_path": "./05_多媒体与设计资产/xhs-visual-director-skill"
-    },
-    {
-        "name": "xiaohongshu-hot-copywriter",
-        "description": "通过本地小红书 MCP 抓取当日热门笔记，提炼趋势风向，并在追问产品与写作风格后，全自动生成符合小红书平台原生表达的爆款中文营销推文。",
-        "category": "05_多媒体与设计资产",
-        "folder": "46_小红书热门营销文案与自动化控制小红书账号",
-        "relative_path": "./05_多媒体与设计资产/46_小红书热门营销文案与自动化控制小红书账号"
-    },
-    {
-        "name": "Amazon-Skills",
-        "description": "亚马逊精细化运营与广告优化 AI 技能包。提供包含 Listing 埋词优化（符合 A9 算法）、FBA 费用深度核算、PPC 广告架构及竞价设计、评论真实性审计在内的专业实操技能。",
-        "category": "06_商业与专业领域",
-        "folder": "Amazon-Skills",
-        "relative_path": "./06_商业与专业领域/Amazon-Skills"
-    },
-    {
-        "name": "AmazonSeller-mcp-server",
-        "description": "亚马逊卖家中心产品管理与多仓库存同步 MCP。支持管理店铺商品的在线刊登、查询实时库存余量，并支持跨平台的库存信息自动对齐。",
-        "category": "06_商业与专业领域",
-        "folder": "AmazonSeller-mcp-server",
-        "relative_path": "./06_商业与专业领域/AmazonSeller-mcp-server"
-    },
-    {
-        "name": "CAD-MCP",
-        "description": "2D 平面工程制图 MCP 服务。作为通用翻译器，允许 AI 通过自然语言直接操控 AutoCAD、中望 CAD (ZWCAD) 和浩辰 CAD (GstarCAD) 进行绘图、图层管理和尺寸标注。仅支持 Windows 系统。",
-        "category": "06_商业与专业领域",
-        "folder": "CAD-MCP",
-        "relative_path": "./06_商业与专业领域/CAD-MCP"
-    },
-    {
-        "name": "LexParse-MCP",
-        "description": "LexParse MCP | Claude 法律文书结构化 MCP 服务。支持中国大陆与香港法律体系，一键把判决书、合同、起诉状等法律文件（PDF/Word/文本）转为结构化 JSON，自动提取当事人、案情事实、法律依据、判决结果和风险条款，并进行风险比对。",
-        "category": "06_商业与专业领域",
-        "folder": "LexParse-MCP",
-        "relative_path": "./06_商业与专业领域/LexParse-MCP"
-    },
-    {
-        "name": "MODBUS-MCP",
-        "description": "工业 Modbus 协议通讯控制 MCP。支持通过 Modbus TCP、UDP 或 Serial/RTU 串口方式与工业设备建立连接，执行读取/写入线圈和寄存器操作以控制 PLC、传感器和执行机构。",
-        "category": "06_商业与专业领域",
-        "folder": "MODBUS-MCP",
-        "relative_path": "./06_商业与专业领域/MODBUS-MCP"
-    },
-    {
-        "name": "OPCUA-MCP",
-        "description": "标准工业 OPC UA 客户端 MCP。支持自动浏览现场设备节点命名空间，高频读取/写入设备数据项，并可直接调用 OPC UA 服务器内部暴露的方法进行状态切换。",
-        "category": "06_商业与专业领域",
-        "folder": "OPCUA-MCP",
-        "relative_path": "./06_商业与专业领域/OPCUA-MCP"
-    },
-    {
-        "name": "Vibe-Lawyering",
-        "description": "⚖️ 法律人的 AI 工具箱。聚合中国法律领域优质 Agent Skills、法律数据库 MCP 工具与 AI 教育资源的开源社区项目。",
-        "category": "06_商业与专业领域",
-        "folder": "Vibe-Lawyering",
-        "relative_path": "./06_商业与专业领域/Vibe-Lawyering"
-    },
-    {
-        "name": "altium-designer-mcp",
-        "description": "Altium Designer 元器件库智能化管理 MCP。辅助管理 AD 库中的封装、原理图符号并进行参数校验，提升硬件设计的元器件建库效率。",
-        "category": "06_商业与专业领域",
-        "folder": "altium-designer-mcp",
-        "relative_path": "./06_商业与专业领域/altium-designer-mcp"
-    },
-    {
-        "name": "altium-eda-agent",
-        "description": "Altium Designer 深度自动化与智能协作 MCP。内置 300 多个开发工具，通过 DelphiScript 桥接与 Altium 交互，支持自然语言触发设计走线、器件网表分析与连接驱动的智能布局。",
-        "category": "06_商业与专业领域",
-        "folder": "altium-eda-agent",
-        "relative_path": "./06_商业与专业领域/altium-eda-agent"
-    },
-    {
-        "name": "amazon_sp_mcp",
-        "description": "亚马逊 Selling Partner API (SP-API) 销售与运营数据集成 MCP。支持读取店铺每日销售额、财务报告、买家退货分析及订单列表，辅助进行多维度的店铺数据盘点与经营状况分析。",
-        "category": "06_商业与专业领域",
-        "folder": "amazon_sp_mcp",
-        "relative_path": "./06_商业与专业领域/amazon_sp_mcp"
-    },
-    {
-        "name": "arduino-cli-mcp",
-        "description": "封装 Arduino CLI 工具链的嵌入式开发 MCP。支持管理板卡开发包与第三方依赖库，编译并直接上传固件至 Arduino、ESP8266/ESP32 等开发板，且提供串口输出读取功能。",
-        "category": "06_商业与专业领域",
-        "folder": "arduino-cli-mcp",
-        "relative_path": "./06_商业与专业领域/arduino-cli-mcp"
-    },
-    {
-        "name": "buffett-skills",
-        "description": "严格的价值投资质量审查 Skill。在买入决策前执行严格的负面清单审查，包括护城河评估、生意模式判断、现金流健康度、管理层诚信审查以及估值安全边际计算。",
-        "category": "06_商业与专业领域",
-        "folder": "buffett-skills",
-        "relative_path": "./06_商业与专业领域/buffett-skills"
-    },
-    {
-        "name": "buywhere-mcp",
-        "description": "东南亚跨境电商多平台竞品比价与选品 MCP。支持在 Shopee、Lazada 等主流电商品牌上跨渠道对比同款商品的技术参数、价格分布及实时库存，辅助爆款发掘与竞品定价决策。",
-        "category": "06_商业与专业领域",
-        "folder": "buywhere-mcp",
-        "relative_path": "./06_商业与专业领域/buywhere-mcp"
-    },
-    {
-        "name": "china-law",
-        "description": "中国法律实务 Claude Code 插件，集成北大法宝 MCP 和 2,190 部本地法律全文，提供 45 项开箱即用的中国法律实务技能。",
-        "category": "06_商业与专业领域",
-        "folder": "china-law",
-        "relative_path": "./06_商业与专业领域/china-law"
-    },
-    {
-        "name": "developer-growth-analysis",
-        "description": "Analyzes your recent Codex chat history to identify coding patterns, development gaps, and areas for improvement, curates relevant learning resources from HackerNews, and automatically sends a personalized growth report to your Slack DMs.",
-        "category": "06_商业与专业领域",
-        "folder": "开发者成长分析器",
-        "relative_path": "./06_商业与专业领域/开发者成长分析器"
-    },
-    {
-        "name": "digikey_mcp",
-        "description": "DigiKey 官方产品数据库查询 MCP。支持根据关键词或零件编号检索 DigiKey 实时元器件库存、多量阶价格、替代型号推荐及元器件包装与物理参数。",
-        "category": "06_商业与专业领域",
-        "folder": "digikey_mcp",
-        "relative_path": "./06_商业与专业领域/digikey_mcp"
-    },
-    {
-        "name": "domain-name-brainstormer",
-        "description": "Generates creative domain name ideas for your project and checks availability across multiple TLDs (.com, .io, .dev, .ai, etc.). Saves hours of brainstorming and manual checking.",
-        "category": "06_商业与专业领域",
-        "folder": "域名脑暴与可用性检查器",
-        "relative_path": "./06_商业与专业领域/域名脑暴与可用性检查器"
-    },
-    {
-        "name": "eCommerce-Skills",
-        "description": "跨境电商全流程业务智能体技能包。内置 140 多个开箱即用的业务技能与提示词规范，深度覆盖亚马逊、Shopify、Etsy、TikTok Shop、Walmart 的选品研究、广告营销、客服运营及财务对账等领域。",
-        "category": "06_商业与专业领域",
-        "folder": "eCommerce-Skills",
-        "relative_path": "./06_商业与专业领域/eCommerce-Skills"
-    },
-    {
-        "name": "ebay-mcp",
-        "description": "eBay 跨境电商店铺自动化运营 MCP。对接 eBay Sell APIs，提供包含产品在线刊登、订单履行与面单打印、营销折扣活动设置及店铺销量分析在内的 300 多个交互工具。",
-        "category": "06_商业与专业领域",
-        "folder": "ebay-mcp",
-        "relative_path": "./06_商业与专业领域/ebay-mcp"
-    },
-    {
-        "name": "embedded-debugger-mcp",
-        "description": "基于 probe-rs 的底层硬件级在线调试 MCP。支持通过 J-Link、ST-Link 等仿真器直接连接 ARM Cortex-M 和 RISC-V 芯片，进行固件烧录、寄存器读写和断点调试。",
-        "category": "06_商业与专业领域",
-        "folder": "embedded-debugger-mcp",
-        "relative_path": "./06_商业与专业领域/embedded-debugger-mcp"
-    },
-    {
-        "name": "freecad-mcp",
-        "description": "FreeCAD 3D 机械与参数化建模 MCP 服务。连接 AI 大模型与开源 3D CAD 软件 FreeCAD，支持自然语言驱动的实体建模、特征操作（拉伸、打孔、倒角）、无头批量导出转换（STEP/STL）。",
-        "category": "06_商业与专业领域",
-        "folder": "freecad-mcp",
-        "relative_path": "./06_商业与专业领域/freecad-mcp"
-    },
-    {
-        "name": "ha-mcp-python",
-        "description": "社区版 Home Assistant 自动化与设备网关 MCP 服务器。使 AI 智能体能直接读取和控制智能家居设备，辅助进行智能场景的编写、调试和配置变更。",
-        "category": "06_商业与专业领域",
-        "folder": "ha-mcp-python",
-        "relative_path": "./06_商业与专业领域/ha-mcp-python"
-    },
-    {
-        "name": "helium-mcp",
-        "description": "Search real-time news with bias scoring, get live stock/ETF/crypto data with AI analysis, ML options pricing, balanced news synthesis, and meme search via the Helium MCP server.",
-        "category": "06_商业与专业领域",
-        "folder": "Helium资讯MCP",
-        "relative_path": "./06_商业与专业领域/Helium资讯MCP"
-    },
-    {
-        "name": "home-assistant-mcp",
-        "description": "Home Assistant 智能家居与场景控制 MCP 服务。支持通过自然语言查询智能硬件状态、调用服务控制家居设备（如灯光、开关、空调），支持本地 stdio 和远程 SSE 传输。",
-        "category": "06_商业与专业领域",
-        "folder": "home-assistant-mcp",
-        "relative_path": "./06_商业与专业领域/home-assistant-mcp"
-    },
-    {
-        "name": "jlcpcb-parts-mcp",
-        "description": "嘉立创可贴片 (PCBA) 元器件库快速校验与搜索 MCP。支持直接在设计环节查询立创元器件的实时库存量、多量阶价格、贴片费率及替代料选型。",
-        "category": "06_商业与专业领域",
-        "folder": "jlcpcb-parts-mcp",
-        "relative_path": "./06_商业与专业领域/jlcpcb-parts-mcp"
-    },
-    {
-        "name": "kicad-mcp-automation",
-        "description": "KiCad 电路设计与生产自动化审核 MCP。支持通过自然语言创建 PCB 项目、运行电气规则检查 (ERC)、设计规则检查 (DRC)、自动生成物料清单 (BOM) 并导出 Gerber 制造文件。",
-        "category": "06_商业与专业领域",
-        "folder": "kicad-mcp-automation",
-        "relative_path": "./06_商业与专业领域/kicad-mcp-automation"
-    },
-    {
-        "name": "kicad-mcp-seeed",
-        "description": "Seeed Studio 官方开发的 KiCad 智能分析与设计助手 MCP。支持基于 KiCad 9.0+ 的原理图分析、PCB 连接关系追踪、元器件网络检查及生成嵌入式驱动代码。",
-        "category": "06_商业与专业领域",
-        "folder": "kicad-mcp-seeed",
-        "relative_path": "./06_商业与专业领域/kicad-mcp-seeed"
-    },
-    {
-        "name": "lead-research-assistant",
-        "description": "Identifies high-quality leads for your product or service by analyzing your business, searching for target companies, and providing actionable contact strategies. Perfect for sales, business development, and marketing professionals.",
-        "category": "06_商业与专业领域",
-        "folder": "销售线索调研助手",
-        "relative_path": "./06_商业与专业领域/销售线索调研助手"
-    },
-    {
-        "name": "legal-case-analysis-plus",
-        "description": "基于法律关系分析法两阶段五步骤框架的案件分析报告（法律关系分析法 Plus）技能，自动对接华宇元典法律数据 MCP 检索相关法规和案例并生成结构化分析报告。",
-        "category": "06_商业与专业领域",
-        "folder": "legal-case-analysis-plus",
-        "relative_path": "./06_商业与专业领域/legal-case-analysis-plus"
-    },
-    {
-        "name": "mcp2serial",
-        "description": "通用物理串口与控制台交互 MCP。支持直接访问并控制主机的物理串口，支持与各类电子实验板卡（如树莓派 Pico 等）进行直接控制台会话和数据流读写。",
-        "category": "06_商业与专业领域",
-        "folder": "mcp2serial",
-        "relative_path": "./06_商业与专业领域/mcp2serial"
-    },
-    {
-        "name": "mqtt-mcp",
-        "description": "轻量级 MQTT 消息网关与物联网调试 MCP。使智能体可以直接连接至本地或远程 MQTT 代理服务器（Broker），实现消息发布、主题订阅及实时硬件遥测数据流监听。",
-        "category": "06_商业与专业领域",
-        "folder": "mqtt-mcp",
-        "relative_path": "./06_商业与专业领域/mqtt-mcp"
-    },
-    {
-        "name": "nexar-mcp",
-        "description": "对接 Octopart/Nexar API 的电子元器件搜索引擎 MCP。支持元器件型号搜索、实时库存与多渠道报价查询、技术参数对比及数据手册 (Datasheet) 链接检索。",
-        "category": "06_商业与专业领域",
-        "folder": "nexar-mcp",
-        "relative_path": "./06_商业与专业领域/nexar-mcp"
-    },
-    {
-        "name": "openscad-mcp",
-        "description": "OpenSCAD 代码驱动 3D 建模与渲染 MCP 服务。完美契合 AI 代码生成能力，AI 编写 OpenSCAD 参数化代码后，后台自动渲染出 3D 模型的 PNG 预览图并返回，实现大模型的『生成代码 -> 视觉验证 -> 纠错迭代』完美闭环。",
-        "category": "06_商业与专业领域",
-        "folder": "openscad-mcp",
-        "relative_path": "./06_商业与专业领域/openscad-mcp"
-    },
-    {
-        "name": "pcbparts-mcp",
-        "description": "跨平台多源元器件与引脚封装搜索 MCP。整合了嘉立创 (JLCPCB)、Mouser 和 DigiKey 数据源，支持器件的参数化搜索、多渠道选型，并可拉取 EasyEDA 的原理图符号引脚定义。",
-        "category": "06_商业与专业领域",
-        "folder": "pcbparts-mcp",
-        "relative_path": "./06_商业与专业领域/pcbparts-mcp"
-    },
-    {
-        "name": "quantdinger",
-        "description": "一站式 AI 量化交易与策略回测工作台。支持从策略脑暴、代码自动生成、历史行情回测、模拟盘测试，到实盘信号监控的完整闭环，适合想将投研设想直接转化为可执行量化策略的进阶用户。",
-        "category": "06_商业与专业领域",
-        "folder": "quant-dinger",
-        "relative_path": "./06_商业与专业领域/quant-dinger"
-    },
-    {
-        "name": "raffle-winner-picker",
-        "description": "Picks random winners from lists, spreadsheets, or Google Sheets for giveaways, raffles, and contests. Ensures fair, unbiased selection with transparency.",
-        "category": "06_商业与专业领域",
-        "folder": "抽奖与随机选人器",
-        "relative_path": "./06_商业与专业领域/抽奖与随机选人器"
-    },
-    {
-        "name": "rigol-dho824-mcp",
-        "description": "普源 Rigol DHO824 系列数字示波器远程控制 MCP。支持通过以太网 LXI 协议读取仪器状态、抓取当前屏幕截图、采集多通道测量数据，并将波形图导出给智能体分析。",
-        "category": "06_商业与专业领域",
-        "folder": "rigol-dho824-mcp",
-        "relative_path": "./06_商业与专业领域/rigol-dho824-mcp"
-    },
-    {
-        "name": "serenity-skill",
-        "description": "Turn an investment agent into a supply-chain bottleneck hunter. Use this skill for source-backed investment research, live market/theme scans, AI/semi/technology value-chain mapping, A-share/HK/US stock screening, thesis stress tests, and Serenity-inspired research conversations. Trigger on requests like \"用 Serenity 的方式看\", \"深度调研\", \"产业链/供应链/卡点/瓶颈\", \"A股 AI 半导体哪个最值得研究\", \"find unknown bottlenecks\", \"rank candidates\", or \"challenge this thesis\". Outputs plain-language reasoning, ranked research priorities, evidence chains, risks, and next verification steps. Research support only; no trade execution.",
-        "category": "06_商业与专业领域",
-        "folder": "serenity-skill",
-        "relative_path": "./06_商业与专业领域/serenity-skill"
-    },
-    {
-        "name": "shopify-mcp",
-        "description": "Shopify 独立站后台全功能管理 MCP。基于 GraphQL Admin API 深度封装，支持产品 (Products)、订单 (Orders) 和客户 (Customers) 的全生命周期管理，支持更新 Metafields 扩展属性及库存修改。",
-        "category": "06_商业与专业领域",
-        "folder": "shopify-mcp",
-        "relative_path": "./06_商业与专业领域/shopify-mcp"
-    },
-    {
-        "name": "spicebridge",
-        "description": "基于 ngspice 的电路设计与仿真分析 MCP。支持使用自然语言描述电路结构，自动生成标准 SPICE 网表并运行 AC、DC 或瞬态仿真，可分析提取波形数据甚至导出为 KiCad 格式。",
-        "category": "06_商业与专业领域",
-        "folder": "spicebridge",
-        "relative_path": "./06_商业与专业领域/spicebridge"
-    },
-    {
-        "name": "text-to-cad",
-        "description": "基于 Python 脚本与 build123d 引擎的参数化 3D CAD 建模协助工具，支持生成并导出 STEP, STL, GLB, URDF 等工业格式。",
-        "category": "06_商业与专业领域",
-        "folder": "text-to-cad",
-        "relative_path": "./06_商业与专业领域/text-to-cad"
-    },
-    {
-        "name": "tradingagents",
-        "description": "顶级的 AI 金融投研多智能体协作框架。将投资决策流程拆解为基本面分析、情绪分析、新闻监测、技术指标分析、研究员、交易员以及风控管理等多 Agent 角色，可深度演练和定制完整的 AI 投研团队。",
-        "category": "06_商业与专业领域",
-        "folder": "trading-agents",
-        "relative_path": "./06_商业与专业领域/trading-agents"
-    },
-    {
-        "name": "uzi-skill",
-        "description": "中文投资者最实用的 A股/港股/美股 分析技能包。集成 22 个分析维度与 180 条量化审核规则，支持龙虎榜跟踪、个股初筛、深度估值排查，并自带“投资大佬评审团”决策流程。",
-        "category": "06_商业与专业领域",
-        "folder": "uzi-skill",
-        "relative_path": "./06_商业与专业领域/uzi-skill"
-    },
-    {
-        "name": "yuandian-mcp-server",
-        "description": "元典开放平台 MCP Server 是面向法律与企业数据场景的标准化 MCP 接入服务，支持法律法规查询、案例文书检索和企业信息获取，帮助智能体快速接入权威法律数据能力。",
-        "category": "06_商业与专业领域",
-        "folder": "yuandian-mcp-server",
-        "relative_path": "./06_商业与专业领域/yuandian-mcp-server"
-    },
-    {
-        "name": "agent-reach",
-        "description": "免 API 密钥的 16+ 平台数据抓取与 Exa 搜索工具，支持获取推特、小红书、微博、YouTube等媒体的内容与字幕。",
-        "category": "07_智能体框架与协同",
-        "folder": "agent-reach",
-        "relative_path": "./07_智能体框架与协同/agent-reach"
-    },
-    {
-        "name": "aurakit",
-        "description": "全能型 Skill 框架：内置 46 种工作模式、23 个子智能体、6 层 OWASP 安全机制、10 个生命周期钩子，能够节省约 55% 的 Token 开销。",
-        "category": "07_智能体框架与协同",
-        "folder": "aurakit",
-        "relative_path": "./07_智能体框架与协同/aurakit"
-    },
-    {
-        "name": "context-engineering-collection",
-        "description": "A comprehensive collection of Agent Skills for context engineering, harness engineering, multi-agent architectures, and production agent systems. Use when building, optimizing, evaluating, or debugging agent systems that require effective context management and reliable operating loops.",
-        "category": "07_智能体框架与协同",
-        "folder": "context-engineering-skills",
-        "relative_path": "./07_智能体框架与协同/context-engineering-skills"
-    },
-    {
-        "name": "emdash-skills",
-        "description": "包含 14 个分类的自主产品构建 OS：支持 Cloudflare Workers + Hono + Angular + D1 + Stripe。只需一行 Prompt 即可快速部署包含 94 篇参考文档、18 个智能体且原生支持 `.agents/skills/` 的 SaaS 应用。",
-        "category": "07_智能体框架与协同",
-        "folder": "emdash-skills",
-        "relative_path": "./07_智能体框架与协同/emdash-skills"
-    },
-    {
-        "name": "mattpocock-skills",
-        "description": "由 TypeScript 著名开发者 Matt Pocock 设计的模块化、可复用 AI Agent 调试与工程开发工作流技能包，涵盖 TDD、需求澄清（grilling）、代码库架构审计、合并冲突解决等高级工程规范。",
-        "category": "07_智能体框架与协同",
-        "folder": "mattpocock-skills",
-        "relative_path": "./07_智能体框架与协同/mattpocock-skills"
-    },
-    {
-        "name": "polywave",
-        "description": "Coordinate Polywave scout and wave flows in Codex. Use for parallel implementation planning, IMPL creation, and guarded wave execution with polywave-tools and the installed Polywave agents.",
-        "category": "07_智能体框架与协同",
-        "folder": "polywave",
-        "relative_path": "./07_智能体框架与协同/polywave"
-    },
-    {
-        "name": "superclaude-framework",
-        "description": "给 Codex 增加一套常用指令菜单。你可以用更简单的命令，让它做分析、修 bug、写代码、优化项目、生成文档等任务。",
-        "category": "07_智能体框架与协同",
-        "folder": "superclaude-framework",
-        "relative_path": "./07_智能体框架与协同/superclaude-framework"
-    },
-    {
-        "name": "vibe",
-        "description": "Vibe Code Orchestrator (VCO) is a governed runtime entry that freezes requirements, plans XL-first execution, and enforces verification and phase cleanup.",
-        "category": "07_智能体框架与协同",
-        "folder": "vibe-skills",
-        "relative_path": "./07_智能体框架与协同/vibe-skills"
-    },
-    {
-        "name": "mcp-builder",
-        "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
-        "category": "08_MCP服务开发与评估",
-        "folder": "MCP服务构建器",
-        "relative_path": "./08_MCP服务开发与评估/MCP服务构建器"
-    },
-    {
-        "name": "connect",
-        "description": "Connect Codex to any app via the Composio CLI. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services from the terminal.",
-        "category": "09_Composio集成服务",
-        "folder": "Composio连接器",
-        "relative_path": "./09_Composio集成服务/Composio连接器"
-    },
-    {
-        "name": "connect-apps",
-        "description": "Connect Claude to external apps via the Composio CLI. Use this skill when the user wants to send emails, create issues, post messages, or take actions across Gmail, Slack, GitHub, Notion, and 1000+ services from the terminal.",
-        "category": "09_Composio集成服务",
-        "folder": "应用连接管理器",
-        "relative_path": "./09_Composio集成服务/应用连接管理器"
-    },
-    {
-        "name": "codex-sms-verification",
-        "description": "用于 AI 智能体接入真实 SIM 短信验证码的 VirtualSMS MCP 插件。支持 145+ 国家、2000+ 在线服务，提供云端托管及本地 stdio 两种传输方式。",
-        "category": "10_短信验证码服务",
-        "folder": "codex-sms-verification",
-        "relative_path": "./10_短信验证码服务/codex-sms-verification"
-    },
-    {
-        "name": "agent-deep-links",
-        "description": "Build, validate, and troubleshoot deep links for Codex, Cursor, VS Code, Visual Studio, and similar tools. Use when users ask for clickable links (especially in Slack) that open threads, files, folders, or app settings.",
-        "category": "11_深层链接构建工具",
-        "folder": "智能体深层链接",
-        "relative_path": "./11_深层链接构建工具/智能体深层链接"
-    },
-    {
-        "name": "antfu-skills",
-        "description": "学习高手如何设计 Skills。适合想进阶的人参考，看看优秀开发者是怎么把经验沉淀成可复用工作流的。",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "antfu-skills",
-        "relative_path": "./12_Skill开发脚手架与安装器/antfu-skills"
-    },
-    {
-        "name": "anthropic-official-skills",
-        "description": "Anthropic 官方示例技能库。主要用来学习\"一个好 Skill 应该怎么写\"，也适合拿来当模板，改成自己的专属技能。",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "anthropic-skills",
-        "relative_path": "./12_Skill开发脚手架与安装器/anthropic-skills"
-    },
-    {
-        "name": "awesome-agent-skills",
-        "description": "一个大型 Skills 目录，收集了很多公司和社区做的技能。适合当\"技能导航站\"，需要什么能力时进去找灵感或模板。",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "awesome-agent-skills",
-        "relative_path": "./12_Skill开发脚手架与安装器/awesome-agent-skills"
-    },
-    {
-        "name": "google-skills",
-        "description": "Google 官方的 13 个 Agent 技能库。提供针对 Google Cloud 模块（如 BigQuery、Firebase、GKE 等）的标准模块化技能以及各种 Recipe。可作为大型团队构建标准企业级智能体技能的权威参考。",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "google-skills",
-        "relative_path": "./12_Skill开发脚手架与安装器/google-skills"
-    },
-    {
-        "name": "minimax-skills",
-        "description": "一套现成的工作流程模板，覆盖前端、全栈、移动端和文档写作。适合不知道怎么下指令的新手，直接照着流程让 Codex 干活。",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "minimax-skills",
-        "relative_path": "./12_Skill开发脚手架与安装器/minimax-skills"
-    },
-    {
-        "name": "skill-creator",
-        "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "技能开发创建指南",
-        "relative_path": "./12_Skill开发脚手架与安装器/技能开发创建指南"
-    },
-    {
-        "name": "skill-installer",
-        "description": "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo. Crucially, when the user searches for or requests any skill that is NOT present in the skills collection package, you MUST automatically use this tool to search for and install it.",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "技能极速安装工具",
-        "relative_path": "./12_Skill开发脚手架与安装器/技能极速安装工具"
-    },
-    {
-        "name": "template-skill",
-        "description": "Replace with description of the skill and when Claude should use it.",
-        "category": "12_Skill开发脚手架与安装器",
-        "folder": "技能开发模板脚手架",
-        "relative_path": "./12_Skill开发脚手架与安装器/技能开发模板脚手架"
-    },
-    {
-        "name": "academic-mcp",
-        "description": "19+ 学术数据库统一检索 MCP 服务。支持 arXiv、PubMed、Google Scholar、IEEE Xplore、Scopus、CrossRef、Semantic Scholar 等主流学术平台的论文检索、PDF 下载和全文阅读提取。",
-        "category": "14_学术论文与科研图表",
-        "folder": "academic-mcp",
-        "relative_path": "./14_学术论文与科研图表/academic-mcp"
-    },
-    {
-        "name": "academic-paper",
-        "description": "12-agent academic paper writing pipeline with style calibration, writing quality check checklists, and revision coaching.",
-        "category": "14_学术论文与科研图表",
-        "folder": "academic-paper",
-        "relative_path": "./14_学术论文与科研图表/academic-paper"
-    },
-    {
-        "name": "academic-paper-reviewer",
-        "description": "7-agent peer review simulator providing editorial decision and prioritized revision roadmap.",
-        "category": "14_学术论文与科研图表",
-        "folder": "academic-paper-reviewer",
-        "relative_path": "./14_学术论文与科研图表/academic-paper-reviewer"
-    },
-    {
-        "name": "academic-pipeline",
-        "description": "10-stage end-to-end academic research pipeline orchestrator with Material Passport tracking.",
-        "category": "14_学术论文与科研图表",
-        "folder": "academic-pipeline",
-        "relative_path": "./14_学术论文与科研图表/academic-pipeline"
-    },
-    {
-        "name": "arxiv-latex-reader",
-        "description": "arXiv 数学公式与 LaTeX 源码解析器。可自动下载 arXiv 论文的 LaTeX 源码，解压多文件包，检索其中的公式、定理、段落，解决从 PDF 直接复制公式时出现的乱码、上下标错位或排版丢失问题。",
-        "category": "14_学术论文与科研图表",
-        "folder": "arxiv-latex-reader",
-        "relative_path": "./14_学术论文与科研图表/arxiv-latex-reader"
-    },
-    {
-        "name": "deep-research",
-        "description": "Multi-agent Socratic research guiding & PRISMA-style systematic literature reviews with Semantic Scholar API verification.",
-        "category": "14_学术论文与科研图表",
-        "folder": "deep-research",
-        "relative_path": "./14_学术论文与科研图表/deep-research"
-    },
-    {
-        "name": "google-scholar-mcp",
-        "description": "Google Scholar 学术检索 MCP 服务。专用 Google Scholar 桥接工具，支持论文检索、作者信息查询、引用数据获取，可通过 Smithery 一键安装到 Claude Desktop 和 Cursor。",
-        "category": "14_学术论文与科研图表",
-        "folder": "google-scholar-mcp",
-        "relative_path": "./14_学术论文与科研图表/google-scholar-mcp"
-    },
-    {
-        "name": "paper-search",
-        "description": "文献学术检索工具。支持在 arXiv 和 PubMed 数据库中检索最新的学术论文、检索论文元数据（标题、作者、来源、年份、摘要、链接），并生成规范的 Markdown 格式列表。",
-        "category": "14_学术论文与科研图表",
-        "folder": "paper-search",
-        "relative_path": "./14_学术论文与科研图表/paper-search"
-    },
-    {
-        "name": "paper-search-mcp",
-        "description": "多源学术论文并发检索 MCP 服务。支持 arXiv、PubMed、bioRxiv、medRxiv、Google Scholar、IACR、Semantic Scholar 等 7+ 数据库并发搜索、自动去重、LLM 标准化输出。",
-        "category": "14_学术论文与科研图表",
-        "folder": "paper-search-mcp",
-        "relative_path": "./14_学术论文与科研图表/paper-search-mcp"
-    },
-    {
-        "name": "sci-hub-mcp",
-        "description": "Sci-Hub 全文 PDF 获取 MCP 服务。通过 DOI、论文标题或关键词检索并下载学术论文全文 PDF，解决'找到论文但无法获取原文'的最后一公里问题。",
-        "category": "14_学术论文与科研图表",
-        "folder": "sci-hub-mcp",
-        "relative_path": "./14_学术论文与科研图表/sci-hub-mcp"
-    },
-    {
-        "name": "scientific-schematics",
-        "description": "使用 Nano Banana Pro AI 生成发表级的科研原理图、网络架构图、信号通路图及流程图，并由 Gemini 3 Pro 进行智能微调与质检。",
-        "category": "14_学术论文与科研图表",
-        "folder": "scientific-schematics",
-        "relative_path": "./14_学术论文与科研图表/scientific-schematics"
-    },
-    {
-        "name": "scientific-visualization",
-        "description": "使用 Matplotlib、Seaborn 和 Plotly 绘制发表级学术图表，支持单/双栏尺寸规范、色盲友好调色板、误差线、显著性标记及高分辨率矢量导出。",
-        "category": "14_学术论文与科研图表",
-        "folder": "scientific-visualization",
-        "relative_path": "./14_学术论文与科研图表/scientific-visualization"
-    },
-    {
-        "name": "semantic-scholar-mcp",
-        "description": "Semantic Scholar 学术引文网络分析 MCP 服务。接入 2 亿+ 论文数据库，支持引文图谱遍历、作者 h-index 画像、DOI/arXiv ID 查询，科研文献综述和影响力分析利器。",
-        "category": "14_学术论文与科研图表",
-        "folder": "semantic-scholar-mcp",
-        "relative_path": "./14_学术论文与科研图表/semantic-scholar-mcp"
-    },
-    {
-        "name": "sympy-solver",
-        "description": "SymPy 符号代数数学计算器。通过本地 Python SymPy 库对复杂的微积分、代数方程组、矩阵代数和极限进行符号求解，生成精确的数学结果与标准 LaTeX 数学公式，彻底杜绝大模型在数学计算上的幻觉。",
-        "category": "14_学术论文与科研图表",
-        "folder": "sympy-solver",
-        "relative_path": "./14_学术论文与科研图表/sympy-solver"
-    },
-    {
-        "name": "zotero-connector",
-        "description": "Zotero 文献库管理同步。支持读取本地 Zotero 数据库（SQLite）或者调用 Zotero Web API，快速检索个人文献库中的论文、作者、发表日期、标签及摘要信息。",
-        "category": "14_学术论文与科研图表",
-        "folder": "zotero-connector",
-        "relative_path": "./14_学术论文与科研图表/zotero-connector"
-    }
+  {
+    "name": "LLM-based-Multi-Agent-System-Architecture-Design-and-Project-Code-Practice",
+    "description": "LLM-based Multi-Agent 系统架构设计与项目代码实践",
+    "category": "01_代码工程与架构",
+    "folder": "LLM-based-Multi-Agent-System-Architecture-Design-and-Project-Code-Practice",
+    "relative_path": "./01_代码工程与架构/LLM-based-Multi-Agent-System-Architecture-Design-and-Project-Code-Practice"
+  },
+  {
+    "name": "bringyour-migration-auditor",
+    "description": "Audit Claude Code to Codex harness migrations, including AGENTS.md/CLAUDE.md scope, hooks, MCP config, skills, secrets, and validation notes. Use after a Codex import or Bring Your AI migration before letting Codex edit code.",
+    "category": "01_代码工程与架构",
+    "folder": "bringyour-migration-auditor",
+    "relative_path": "./01_代码工程与架构/bringyour-migration-auditor"
+  },
+  {
+    "name": "brooks-lint",
+    "description": "基于六本经典软件工程书籍的 AI 代码评审工具 —— 提供包含书籍引用、严重程度标签以及四种分析模式（PR 评审、架构审计、技术债、测试质量）的系统退化风险诊断。",
+    "category": "01_代码工程与架构",
+    "folder": "brooks-lint",
+    "relative_path": "./01_代码工程与架构/brooks-lint"
+  },
+  {
+    "name": "codebase-migrate",
+    "description": "Run large codebase migrations and multi-file refactors. Uses the Composio CLI to coordinate issue tracking, batched PRs, and CI verification while the agent executes the transforms locally across hundreds of files.",
+    "category": "01_代码工程与架构",
+    "folder": "代码库迁移与重构工具",
+    "relative_path": "./01_代码工程与架构/代码库迁移与重构工具"
+  },
+  {
+    "name": "codebase-recon",
+    "description": "Use when entering an unfamiliar codebase, onboarding to a new project, or wanting to assess codebase health before reading code — analyzes git history to reveal hotspots, risk areas, team structure, and development momentum\n",
+    "category": "01_代码工程与架构",
+    "folder": "codebase-recon",
+    "relative_path": "./01_代码工程与架构/codebase-recon"
+  },
+  {
+    "name": "create-plan",
+    "description": "Create a concise plan. Use when a user explicitly asks for a plan related to a coding task.",
+    "category": "01_代码工程与架构",
+    "folder": "开发计划制定器",
+    "relative_path": "./01_代码工程与架构/开发计划制定器"
+  },
+  {
+    "name": "git-workflow-skill",
+    "description": "Agent Skill for Git workflow best practices - branching, commits, PR workflows | Claude Code compatible",
+    "category": "01_代码工程与架构",
+    "folder": "git-workflow-skill",
+    "relative_path": "./01_代码工程与架构/git-workflow-skill"
+  },
+  {
+    "name": "planning-with-files",
+    "description": "让 Codex 用 Markdown 文件记录计划、进度和上下文。适合长期项目，避免聊着聊着忘记前面做过什么。",
+    "category": "01_代码工程与架构",
+    "folder": "planning-with-files",
+    "relative_path": "./01_代码工程与架构/planning-with-files"
+  },
+  {
+    "name": "sentry-triage",
+    "description": "Diagnose Sentry issues without copy-pasting stack traces. Uses the Composio CLI to pull issue details, events, breadcrumbs, and suspect commits, then maps the frames to local source so the agent can propose a fix directly.",
+    "category": "01_代码工程与架构",
+    "folder": "Sentry错误定位工具",
+    "relative_path": "./01_代码工程与架构/Sentry错误定位工具"
+  },
+  {
+    "name": "superpowers",
+    "description": "让 Codex 像严格工程师一样干活：先写测试，再写代码，还会主动做代码检查，减少\"看起来能跑、实际有坑\"的情况。",
+    "category": "01_代码工程与架构",
+    "folder": "superpowers",
+    "relative_path": "./01_代码工程与架构/superpowers"
+  },
+  {
+    "name": "vercel-agent-skills",
+    "description": "Vercel 官方的网页开发检查规则，特别适合 React 和前端项目。帮你检查页面性能、结构、可访问性和工程规范。",
+    "category": "01_代码工程与架构",
+    "folder": "vercel-agent-skills",
+    "relative_path": "./01_代码工程与架构/vercel-agent-skills"
+  },
+  {
+    "name": "datadog-logs",
+    "description": "Query and filter Datadog logs from the shell using the Composio CLI. Run scoped log searches, pivot across services/environments, and export structured JSON for downstream agents instead of click-driving the Datadog UI.",
+    "category": "02_DevOps与自动化",
+    "folder": "Datadog日志筛选器",
+    "relative_path": "./02_DevOps与自动化/Datadog日志筛选器"
+  },
+  {
+    "name": "deploy-pipeline",
+    "description": "Run end-to-end deploy pipelines across Stripe, Supabase, and Vercel using the Composio CLI. Promote Stripe products, push Supabase migrations, ship Vercel deployments, and verify with post-deploy checks — all from one script.",
+    "category": "02_DevOps与自动化",
+    "folder": "部署流水线工具",
+    "relative_path": "./02_DevOps与自动化/部署流水线工具"
+  },
+  {
+    "name": "gh-address-comments",
+    "description": "Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in.",
+    "category": "02_DevOps与自动化",
+    "folder": "GitHub-PR评论处理器",
+    "relative_path": "./02_DevOps与自动化/GitHub-PR评论处理器"
+  },
+  {
+    "name": "gh-fix-ci",
+    "description": "Inspect GitHub PR checks with gh, pull failing GitHub Actions logs, summarize failure context, then create a fix plan and implement after user approval. Use when a user asks to debug or fix failing PR CI/CD checks on GitHub Actions and wants a plan + code changes; for external checks (e.g., Buildkite), only report the details URL and mark them out of scope.",
+    "category": "02_DevOps与自动化",
+    "folder": "GitHub-CI错误修复器",
+    "relative_path": "./02_DevOps与自动化/GitHub-CI错误修复器"
+  },
+  {
+    "name": "langsmith-fetch",
+    "description": "Debug LangChain and LangGraph agents by fetching execution traces from LangSmith Studio. Use when debugging agent behavior, investigating errors, analyzing tool calls, checking memory operations, or examining agent performance. Automatically fetches recent traces and analyzes execution patterns. Requires langsmith-fetch CLI installed.",
+    "category": "02_DevOps与自动化",
+    "folder": "LangSmith数据抓取器",
+    "relative_path": "./02_DevOps与自动化/LangSmith数据抓取器"
+  },
+  {
+    "name": "mcp-github-pr-issue-analyser",
+    "description": "A Model Context Protocol (MCP) application for automated GitHub PR analysis and issue management.",
+    "category": "02_DevOps与自动化",
+    "folder": "mcp-github-pr-issue-analyser",
+    "relative_path": "./02_DevOps与自动化/mcp-github-pr-issue-analyser"
+  },
+  {
+    "name": "pr-review-ci-fix",
+    "description": "Automated PR review and CI auto-fix for GitHub and GitLab using the Composio CLI. Pulls diffs, fetches failing job logs, posts review comments, and loops fix commits until checks go green.",
+    "category": "02_DevOps与自动化",
+    "folder": "PR评审与CI自动修复器",
+    "relative_path": "./02_DevOps与自动化/PR评审与CI自动修复器"
+  },
+  {
+    "name": "webapp-testing",
+    "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+    "category": "02_DevOps与自动化",
+    "folder": "网页自动化测试器",
+    "relative_path": "./02_DevOps与自动化/网页自动化测试器"
+  },
+  {
+    "name": "File-Organizer-MCP",
+    "description": "This MCP server will organize your files using connections to MCP using clients like Claude, Cursor and Gemini Cli",
+    "category": "03_效率工具与协同管理",
+    "folder": "File-Organizer-MCP",
+    "relative_path": "./03_效率工具与协同管理/File-Organizer-MCP"
+  },
+  {
+    "name": "defuddle",
+    "description": "智能清理网页中的广告、导航栏和无用代码，为知识库生成干净、高可读性、节省 Token 的 Markdown 文档。",
+    "category": "03_效率工具与协同管理",
+    "folder": "defuddle",
+    "relative_path": "./03_效率工具与协同管理/defuddle"
+  },
+  {
+    "name": "file-organizer",
+    "description": "Intelligently organizes your files and folders across your computer by understanding context, finding duplicates, suggesting better structures, and automating cleanup tasks. Reduces cognitive load and keeps your digital workspace tidy without manual effort.",
+    "category": "03_效率工具与协同管理",
+    "folder": "工作区文件整理器",
+    "relative_path": "./03_效率工具与协同管理/工作区文件整理器"
+  },
+  {
+    "name": "hk-finance-mcp-server",
+    "description": "An MCP server that provides access to finance related data in Hong Kong through a FastMCP interface.",
+    "category": "03_效率工具与协同管理",
+    "folder": "hk-finance-mcp-server",
+    "relative_path": "./03_效率工具与协同管理/hk-finance-mcp-server"
+  },
+  {
+    "name": "internal-comms",
+    "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+    "category": "03_效率工具与协同管理",
+    "folder": "内部沟通文案撰写器",
+    "relative_path": "./03_效率工具与协同管理/内部沟通文案撰写器"
+  },
+  {
+    "name": "invoice-organizer",
+    "description": "Automatically organizes invoices and receipts for tax preparation by reading messy files, extracting key information, renaming them consistently, and sorting them into logical folders. Turns hours of manual bookkeeping into minutes of automated organization.",
+    "category": "03_效率工具与协同管理",
+    "folder": "财务发票整理器",
+    "relative_path": "./03_效率工具与协同管理/财务发票整理器"
+  },
+  {
+    "name": "issue-triage",
+    "description": "Triage Linear or Jira backlogs and run bug sweeps via the Composio CLI. Bulk-fetch issues, dedupe, relabel, reassign, and post summaries — all from the shell without clicking through the UI.",
+    "category": "03_效率工具与协同管理",
+    "folder": "工单分流整理器",
+    "relative_path": "./03_效率工具与协同管理/工单分流整理器"
+  },
+  {
+    "name": "json-canvas",
+    "description": "支持 Obsidian 空间思维导图（.canvas 文件）的读取与编辑，使 AI 能够绘制或修改可视化的思维图谱。",
+    "category": "03_效率工具与协同管理",
+    "folder": "json-canvas",
+    "relative_path": "./03_效率工具与协同管理/json-canvas"
+  },
+  {
+    "name": "linear",
+    "description": "Manage issues, projects & team workflows in Linear. Use when the user wants to read, create or updates tickets in Linear.",
+    "category": "03_效率工具与协同管理",
+    "folder": "Linear项目管理工具",
+    "relative_path": "./03_效率工具与协同管理/Linear项目管理工具"
+  },
+  {
+    "name": "mcp-linear",
+    "description": "MCP server that enables AI assistants to interact with Linear project management system through natural language",
+    "category": "03_效率工具与协同管理",
+    "folder": "mcp-linear",
+    "relative_path": "./03_效率工具与协同管理/mcp-linear"
+  },
+  {
+    "name": "meeting-insights-analyzer",
+    "description": "Analyzes meeting transcripts and recordings to uncover behavioral patterns, communication insights, and actionable feedback. Identifies when you avoid conflict, use filler words, dominate conversations, or miss opportunities to listen. Perfect for professionals seeking to improve their communication and leadership skills.",
+    "category": "03_效率工具与协同管理",
+    "folder": "会议纪要洞察分析器",
+    "relative_path": "./03_效率工具与协同管理/会议纪要洞察分析器"
+  },
+  {
+    "name": "meeting-notes-and-actions",
+    "description": "Turn meeting transcripts or rough notes into crisp summaries with decisions, risks, and owner-tagged action items; use for Zoom/Meet/Teams transcripts, call notes, or long meeting chats to generate share-ready outputs.",
+    "category": "03_效率工具与协同管理",
+    "folder": "会议纪要与行动项生成器",
+    "relative_path": "./03_效率工具与协同管理/会议纪要与行动项生成器"
+  },
+  {
+    "name": "notion-knowledge-capture",
+    "description": "Capture conversations and decisions into structured Notion pages; use when turning chats/notes into wiki entries, how-tos, decisions, or FAQs with proper linking.",
+    "category": "03_效率工具与协同管理",
+    "folder": "Notion知识库捕获器",
+    "relative_path": "./03_效率工具与协同管理/Notion知识库捕获器"
+  },
+  {
+    "name": "notion-meeting-intelligence",
+    "description": "Prepare meeting materials with Notion context and Codex research; use when gathering context, drafting agendas/pre-reads, and tailoring materials to attendees.",
+    "category": "03_效率工具与协同管理",
+    "folder": "Notion会议智能助手",
+    "relative_path": "./03_效率工具与协同管理/Notion会议智能助手"
+  },
+  {
+    "name": "notion-research-documentation",
+    "description": "Research across Notion and synthesize into structured documentation; use when gathering info from multiple Notion sources to produce briefs, comparisons, or reports with citations.",
+    "category": "03_效率工具与协同管理",
+    "folder": "Notion文献调研工具",
+    "relative_path": "./03_效率工具与协同管理/Notion文献调研工具"
+  },
+  {
+    "name": "notion-spec-to-implementation",
+    "description": "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them.",
+    "category": "03_效率工具与协同管理",
+    "folder": "Notion规格说明转执行工具",
+    "relative_path": "./03_效率工具与协同管理/Notion规格说明转执行工具"
+  },
+  {
+    "name": "obsidian-bases",
+    "description": "处理 Obsidian 的数据库层（.base 文件），支持在 Vault 中进行结构化数据的读写与关系管理。",
+    "category": "03_效率工具与协同管理",
+    "folder": "obsidian-bases",
+    "relative_path": "./03_效率工具与协同管理/obsidian-bases"
+  },
+  {
+    "name": "obsidian-cli",
+    "description": "通过命令行或快捷方式直接与本地 Obsidian 库进行交互，支持搜索、打开和管理笔记库。",
+    "category": "03_效率工具与协同管理",
+    "folder": "obsidian-cli",
+    "relative_path": "./03_效率工具与协同管理/obsidian-cli"
+  },
+  {
+    "name": "obsidian-markdown",
+    "description": "确保 wikilink、frontmatter 和 tag 格式符合 Obsidian 规范，避免 AI 破坏 Obsidian 独有的链接和元数据结构。",
+    "category": "03_效率工具与协同管理",
+    "folder": "obsidian-markdown",
+    "relative_path": "./03_效率工具与协同管理/obsidian-markdown"
+  },
+  {
+    "name": "obsidian-vault-mcp",
+    "description": "MCP tool allowing Open WebUI or Claude Desktop to retrieve files from your vault",
+    "category": "03_效率工具与协同管理",
+    "folder": "obsidian-vault-mcp",
+    "relative_path": "./03_效率工具与协同管理/obsidian-vault-mcp"
+  },
+  {
+    "name": "skill-share",
+    "description": "A skill that creates new Claude skills and automatically shares them on Slack using Rube for seamless team collaboration and skill discovery.",
+    "category": "03_效率工具与协同管理",
+    "folder": "技能共享与分发服务",
+    "relative_path": "./03_效率工具与协同管理/技能共享与分发服务"
+  },
+  {
+    "name": "support-ticket-triage",
+    "description": "Triage customer support tickets/emails/chats into categories, priority, and next action; draft responses and create reproducible steps; use for Zendesk/Intercom/Help Scout exports or pasted threads.",
+    "category": "03_效率工具与协同管理",
+    "folder": "客服工单分类自动回复器",
+    "relative_path": "./03_效率工具与协同管理/客服工单分类自动回复器"
+  },
+  {
+    "name": "canghe-tianyancha",
+    "description": "基于大模型并行搜索的企业洞察看板生成工具。输入企业或行业名称，自动生成包含工商、司法风险、在招岗位及知识产权在内的单文件 HTML 仪表板。",
+    "category": "04_内容创作与文档处理",
+    "folder": "canghe-tianyancha",
+    "relative_path": "./04_内容创作与文档处理/canghe-tianyancha"
+  },
+  {
+    "name": "changelog-generator",
+    "description": "Automatically creates user-facing changelogs from git commits by analyzing commit history, categorizing changes, and transforming technical commits into clear, customer-friendly release notes. Turns hours of manual changelog writing into minutes of automated generation.",
+    "category": "04_内容创作与文档处理",
+    "folder": "更新日志生成器",
+    "relative_path": "./04_内容创作与文档处理/更新日志生成器"
+  },
+  {
+    "name": "content-research-writer",
+    "description": "Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.",
+    "category": "04_内容创作与文档处理",
+    "folder": "内容调研与写作器",
+    "relative_path": "./04_内容创作与文档处理/内容调研与写作器"
+  },
+  {
+    "name": "dbskill",
+    "description": "内容创作者的\"选题诊断器\"。适合做内容诊断、商业表达、hook、小红书标题、爆款拆解，尤其适合中文自媒体和知识型创作者。",
+    "category": "04_内容创作与文档处理",
+    "folder": "dbskill",
+    "relative_path": "./04_内容创作与文档处理/dbskill"
+  },
+  {
+    "name": "diasporic-intelligence",
+    "description": "Use when writing, reviewing, citing, or implementing Diasporic Intelligence, a source-credited framework also described as Afrotemporalism in Action. Preserves source credit, consent governance, provenance, revocation, lineage boundaries, and the distinction from generic cultural AI, biometric extraction, and ancestor impersonation.",
+    "category": "04_内容创作与文档处理",
+    "folder": "diasporic-intelligence",
+    "relative_path": "./04_内容创作与文档处理/diasporic-intelligence"
+  },
+  {
+    "name": "email-draft-polish",
+    "description": "Draft, rewrite, or condense emails with target tone, length, and audience; use for cold outreach, replies, status updates, or escalations where clarity and brevity matter.",
+    "category": "04_内容创作与文档处理",
+    "folder": "邮件草稿润色器",
+    "relative_path": "./04_内容创作与文档处理/邮件草稿润色器"
+  },
+  {
+    "name": "humanize-text",
+    "description": "Free open-source AI text humanizer to convert AI-generated content into undetectable, human-like writing.",
+    "category": "04_内容创作与文档处理",
+    "folder": "humanize-text",
+    "relative_path": "./04_内容创作与文档处理/humanize-text"
+  },
+  {
+    "name": "humanizer-zh",
+    "description": "去除文本中的 AI 生成痕迹。适用于编辑或审阅文本，使其听起来更自然、更像人类书写。\n基于维基百科的\"AI 写作特征\"综合指南。检测并修复以下模式：夸大的象征意义、\n宣传性语言、以 -ing 结尾的肤浅分析、模糊的归因、破折号过度使用、三段式法则、\nAI 词汇、否定式排比、过多的连接性短语。\n",
+    "category": "04_内容创作与文档处理",
+    "folder": "humanizer-zh",
+    "relative_path": "./04_内容创作与文档处理/humanizer-zh"
+  },
+  {
+    "name": "khazix-skills",
+    "description": "适合公众号长文和万字研究报告。里面的写作流比较重，适合做 AI 热点分析、长文拆解、深度观点输出。",
+    "category": "04_内容创作与文档处理",
+    "folder": "khazix-skills",
+    "relative_path": "./04_内容创作与文档处理/khazix-skills"
+  },
+  {
+    "name": "markitdown",
+    "description": "微软官方万能文档与多媒体 Markdown 转换工具。支持 PDF、Word、Excel、PowerPoint、音视频转译、网页及 ZIP 归档文件的提取与 Markdown 转换。",
+    "category": "04_内容创作与文档处理",
+    "folder": "markitdown",
+    "relative_path": "./04_内容创作与文档处理/markitdown"
+  },
+  {
+    "name": "notebooklm",
+    "description": "Use this skill to query your Google NotebookLM notebooks directly from Claude Code for source-grounded, citation-backed answers from Gemini. Browser automation, library management, persistent auth. Drastically reduced hallucinations through document-only responses.",
+    "category": "04_内容创作与文档处理",
+    "folder": "notebooklm-skill",
+    "relative_path": "./04_内容创作与文档处理/notebooklm-skill"
+  },
+  {
+    "name": "novel-writing",
+    "description": "用于虚构文学创作规划、章节起草、场景续写与修改评审的 Codex 技能工具箱。",
+    "category": "04_内容创作与文档处理",
+    "folder": "novel-writing",
+    "relative_path": "./04_内容创作与文档处理/novel-writing"
+  },
+  {
+    "name": "paddleocr-doc-parsing",
+    "description": "基于 PaddleOCR 的高级文档结构解析工具，支持提取文本、表格（带 HTML/Markdown 结构）、公式及图表的排版布局信息。",
+    "category": "04_内容创作与文档处理",
+    "folder": "paddleocr-doc-parsing",
+    "relative_path": "./04_内容创作与文档处理/paddleocr-doc-parsing"
+  },
+  {
+    "name": "paperjsx",
+    "description": "Generate PPTX presentations, DOCX documents, XLSX spreadsheets, and PDF reports from structured JSON input using PaperJSX.",
+    "category": "04_内容创作与文档处理",
+    "folder": "PaperJSX报表自动生成器",
+    "relative_path": "./04_内容创作与文档处理/PaperJSX报表自动生成器"
+  },
+  {
+    "name": "spreadsheet-formula-helper",
+    "description": "Write and debug spreadsheet formulas (Excel/Google Sheets), pivot tables, and array formulas; translate between dialects; use when users need working formulas with examples and edge-case checks.",
+    "category": "04_内容创作与文档处理",
+    "folder": "电子表格公式助手",
+    "relative_path": "./04_内容创作与文档处理/电子表格公式助手"
+  },
+  {
+    "name": "tailored-resume-generator",
+    "description": "Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances",
+    "category": "04_内容创作与文档处理",
+    "folder": "定制化简历优化器",
+    "relative_path": "./04_内容创作与文档处理/定制化简历优化器"
+  },
+  {
+    "name": "unslop",
+    "description": "去除文本中 AI 写作腔调（如三列排比句、破折号泛滥、套话及迎合性开场白）的命令行及 MCP 工具。适配 Codex、Claude Code、Gemini CLI 与 Cursor，提供 5 档清理强度和只读审计模式。",
+    "category": "04_内容创作与文档处理",
+    "folder": "unslop",
+    "relative_path": "./04_内容创作与文档处理/unslop"
+  },
+  {
+    "name": "baoyu-skills",
+    "description": "中文内容创作者的视觉工具箱。封面图、信息图、结构图、图解都能做，适合文章包装和观点可视化。",
+    "category": "05_多媒体与设计资产",
+    "folder": "baoyu-skills",
+    "relative_path": "./05_多媒体与设计资产/baoyu-skills"
+  },
+  {
+    "name": "brand-guidelines",
+    "description": "Applies OpenAI's brand colors and typography to any artifact that should match the Codex/OpenAI look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+    "category": "05_多媒体与设计资产",
+    "folder": "品牌设计规范",
+    "relative_path": "./05_多媒体与设计资产/品牌设计规范"
+  },
+  {
+    "name": "canghe-douyin-downloader",
+    "description": "抖音无水印视频下载与音频提取，支持基于硅基流动 API 从视频中一键提取语音文案。",
+    "category": "05_多媒体与设计资产",
+    "folder": "canghe-douyin-downloader",
+    "relative_path": "./05_多媒体与设计资产/canghe-douyin-downloader"
+  },
+  {
+    "name": "canghe-manga-style-video",
+    "description": "漫画风格视频生成器，支持基于火山引擎 Ark API 生成日式、国风、美式卡通等 8 种漫画风格的视频。",
+    "category": "05_多媒体与设计资产",
+    "folder": "canghe-manga-style-video",
+    "relative_path": "./05_多媒体与设计资产/canghe-manga-style-video"
+  },
+  {
+    "name": "canvas-design",
+    "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+    "category": "05_多媒体与设计资产",
+    "folder": "画布设计",
+    "relative_path": "./05_多媒体与设计资产/画布设计"
+  },
+  {
+    "name": "cinema-manager",
+    "description": "个人影音库管理与搜索工具，支持根据分辨率/音轨/字幕排序筛选影视资源、自动转存夸克网盘、按 Plex/Infuse 标准重命名与分类归档。",
+    "category": "05_多媒体与设计资产",
+    "folder": "cinema-manager",
+    "relative_path": "./05_多媒体与设计资产/cinema-manager"
+  },
+  {
+    "name": "competitive-ads-extractor",
+    "description": "Extracts and analyzes competitors' ads from ad libraries (Facebook, LinkedIn, etc.) to understand what messaging, problems, and creative approaches are working. Helps inspire and improve your own ad campaigns.",
+    "category": "05_多媒体与设计资产",
+    "folder": "竞品广告提取器",
+    "relative_path": "./05_多媒体与设计资产/竞品广告提取器"
+  },
+  {
+    "name": "generative-media-skills",
+    "description": "AI 视频生成工具箱，覆盖图片、视频和音频生成，可以调用 AI 模型制作产品广告、UGC 视频、音乐视频和社交媒体短片。部分功能需要配置 MuAPI，并会产生生成费用。",
+    "category": "05_多媒体与设计资产",
+    "folder": "generative-media-skills",
+    "relative_path": "./05_多媒体与设计资产/generative-media-skills"
+  },
+  {
+    "name": "guizang-ppt-skill",
+    "description": "生成横向翻页网页 PPT（单 HTML 文件），含 WebGL 背景、章节幕封、数据大字报、图片网格等模板。提供两种风格：① \"电子杂志 × 电子墨水\"（衬线 + 流体背景 + 暖色） ② \"瑞士国际主义\"（无衬线 + 网格点阵 + IKB/柠檬黄/柠檬绿/安全橙高亮）。当用户需要制作分享 / 演讲 / 发布会风格的网页 PPT，或提到\"杂志风 PPT\"、\"瑞士风 PPT\"、\"Swiss Style\"、\"horizontal swipe deck\"时使用。",
+    "category": "05_多媒体与设计资产",
+    "folder": "guizang-ppt-skill",
+    "relative_path": "./05_多媒体与设计资产/guizang-ppt-skill"
+  },
+  {
+    "name": "guizang-social-card-skill",
+    "description": "Generate Guizang-style social card image sets and WeChat official account cover pairs from articles, scripts, screenshots, product notes, subtitles, or photos. Use when the user asks for 小红书图文, Rednote/Xiaohongshu images, social cards, carousel images, 3:4 covers, 微信公众号封面, WeChat 21:9 + 1:1 covers, Swiss Style, or magazine-style social images.",
+    "category": "05_多媒体与设计资产",
+    "folder": "guizang-social-card-skill",
+    "relative_path": "./05_多媒体与设计资产/guizang-social-card-skill"
+  },
+  {
+    "name": "html-anything",
+    "description": "把 Markdown、文案、文章变成好看的 HTML 页面、海报、卡片和 PNG。适合做杂志风文章、小红书卡片、知识卡片和分享图。",
+    "category": "05_多媒体与设计资产",
+    "folder": "html-anything",
+    "relative_path": "./05_多媒体与设计资产/html-anything"
+  },
+  {
+    "name": "hyperframes",
+    "description": "一句话生成动效视频。告诉 Codex 视频主题，它可以使用 HTML、CSS 和动画制作产品介绍、动态海报、知识视频和 PPT 风格视频，最后渲染为 MP4。很适合把文章、推文、产品介绍快速改成视频。",
+    "category": "05_多媒体与设计资产",
+    "folder": "hyperframes",
+    "relative_path": "./05_多媒体与设计资产/hyperframes"
+  },
+  {
+    "name": "ian-xiaohei-illustrations",
+    "description": "中文文章正文配图神器。不是随便生成一张图，而是把文章里的观点、流程、情绪、隐喻画成\"小黑\"风格插图。",
+    "category": "05_多媒体与设计资产",
+    "folder": "ian-xiaohei-illustrations",
+    "relative_path": "./05_多媒体与设计资产/ian-xiaohei-illustrations"
+  },
+  {
+    "name": "image-enhancer",
+    "description": "Improves the quality of images, especially screenshots, by enhancing resolution, sharpness, and clarity. Perfect for preparing images for presentations, documentation, or social media posts.",
+    "category": "05_多媒体与设计资产",
+    "folder": "图像无损增强器",
+    "relative_path": "./05_多媒体与设计资产/图像无损增强器"
+  },
+  {
+    "name": "lottie",
+    "description": "生成生产级 Lottie 动画。可以将文本提示语或设计需求直接转换为可交互、矢量无损的 Lottie 动效动画，适用于网页、App UI 交互及动态多媒体设计。",
+    "category": "05_多媒体与设计资产",
+    "folder": "lottie",
+    "relative_path": "./05_多媒体与设计资产/lottie"
+  },
+  {
+    "name": "mediacrawler",
+    "description": "多平台社交媒体数据爬虫技能，支持小红书、抖音、快手、B站、微博、贴吧、知乎的数据（帖子、视频、评论）爬取，使用 Playwright 自动化技术，支持扫码登录/Cookie 复用，能规避平台反爬。",
+    "category": "05_多媒体与设计资产",
+    "folder": "MediaCrawler",
+    "relative_path": "./05_多媒体与设计资产/MediaCrawler"
+  },
+  {
+    "name": "remotion-skills",
+    "description": "Remotion 官方提供的 Agent Skills。可以让 Codex 使用 React 编写视频，统一控制画面、字幕、动画和时间轴。特别适合批量制作排行榜、数据周报、产品更新和固定栏目视频。",
+    "category": "05_多媒体与设计资产",
+    "folder": "remotion-skills",
+    "relative_path": "./05_多媒体与设计资产/remotion-skills"
+  },
+  {
+    "name": "seedance-prompt-en",
+    "description": "Write effective prompts for Jimeng Seedance 2.0 multimodal AI video generation. Use when users want to create video prompts using text, images, videos, and audio inputs with the @ reference system. Covers camera movements, effects replication, video extension, editing, music beat-matching, e-commerce ads, short dramas, and educational content.",
+    "category": "05_多媒体与设计资产",
+    "folder": "seedance2-skill",
+    "relative_path": "./05_多媒体与设计资产/seedance2-skill"
+  },
+  {
+    "name": "slack-gif-creator",
+    "description": "Toolkit for creating animated GIFs optimized for Slack, with validators for size constraints and composable animation primitives. This skill applies when users request animated GIFs or emoji animations for Slack from descriptions like \"make me a GIF for Slack of X doing Y\".",
+    "category": "05_多媒体与设计资产",
+    "folder": "Slack-GIF动态图生成器",
+    "relative_path": "./05_多媒体与设计资产/Slack-GIF动态图生成器"
+  },
+  {
+    "name": "theme-factory",
+    "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+    "category": "05_多媒体与设计资产",
+    "folder": "UI主题色工厂",
+    "relative_path": "./05_多媒体与设计资产/UI主题色工厂"
+  },
+  {
+    "name": "video-use",
+    "description": "Edit any video by conversation. Transcribe, cut, color grade, generate overlay animations, burn subtitles — for talking heads, montages, tutorials, travel, interviews. No presets, no menus. Ask questions, confirm the plan, execute, iterate, persist. Production-correctness rules are hard; everything else is artistic freedom.",
+    "category": "05_多媒体与设计资产",
+    "folder": "video-use",
+    "relative_path": "./05_多媒体与设计资产/video-use"
+  },
+  {
+    "name": "videocut-skills",
+    "description": "面向中文创作者的视频剪辑 Skills，可以让 Agent 理解剪辑需求，并协助处理素材、字幕和短视频制作流程。中文用户想用 Claude Code 或其他 Agent 剪视频的首选。",
+    "category": "05_多媒体与设计资产",
+    "folder": "videocut-skills",
+    "relative_path": "./05_多媒体与设计资产/videocut-skills"
+  },
+  {
+    "name": "xhs-visual-director",
+    "description": "小红书视觉导演技能，辅助设计与编排小红书爆款图文视觉结构及文案排版。",
+    "category": "05_多媒体与设计资产",
+    "folder": "xhs-visual-director-skill",
+    "relative_path": "./05_多媒体与设计资产/xhs-visual-director-skill"
+  },
+  {
+    "name": "xiaohongshu-hot-copywriter",
+    "description": "通过本地小红书 MCP 抓取当日热门笔记，提炼趋势风向，并在追问产品与写作风格后，全自动生成符合小红书平台原生表达的爆款中文营销推文。",
+    "category": "05_多媒体与设计资产",
+    "folder": "46_小红书热门营销文案与自动化控制小红书账号",
+    "relative_path": "./05_多媒体与设计资产/46_小红书热门营销文案与自动化控制小红书账号"
+  },
+  {
+    "name": "Amazon-Skills",
+    "description": "亚马逊精细化运营与广告优化 AI 技能包。提供包含 Listing 埋词优化（符合 A9 算法）、FBA 费用深度核算、PPC 广告架构及竞价设计、评论真实性审计在内的专业实操技能。",
+    "category": "06_商业与专业领域",
+    "folder": "Amazon-Skills",
+    "relative_path": "./06_商业与专业领域/Amazon-Skills"
+  },
+  {
+    "name": "AmazonSeller-mcp-server",
+    "description": "亚马逊卖家中心产品管理与多仓库存同步 MCP。支持管理店铺商品的在线刊登、查询实时库存余量，并支持跨平台的库存信息自动对齐。",
+    "category": "06_商业与专业领域",
+    "folder": "AmazonSeller-mcp-server",
+    "relative_path": "./06_商业与专业领域/AmazonSeller-mcp-server"
+  },
+  {
+    "name": "CAD-MCP",
+    "description": "2D 平面工程制图 MCP 服务。作为通用翻译器，允许 AI 通过自然语言直接操控 AutoCAD、中望 CAD (ZWCAD) 和浩辰 CAD (GstarCAD) 进行绘图、图层管理和尺寸标注。仅支持 Windows 系统。",
+    "category": "06_商业与专业领域",
+    "folder": "CAD-MCP",
+    "relative_path": "./06_商业与专业领域/CAD-MCP"
+  },
+  {
+    "name": "LexParse-MCP",
+    "description": "LexParse MCP | Claude 法律文书结构化 MCP 服务。支持中国大陆与香港法律体系，一键把判决书、合同、起诉状等法律文件（PDF/Word/文本）转为结构化 JSON，自动提取当事人、案情事实、法律依据、判决结果和风险条款，并进行风险比对。",
+    "category": "06_商业与专业领域",
+    "folder": "LexParse-MCP",
+    "relative_path": "./06_商业与专业领域/LexParse-MCP"
+  },
+  {
+    "name": "MODBUS-MCP",
+    "description": "工业 Modbus 协议通讯控制 MCP。支持通过 Modbus TCP、UDP 或 Serial/RTU 串口方式与工业设备建立连接，执行读取/写入线圈和寄存器操作以控制 PLC、传感器和执行机构。",
+    "category": "06_商业与专业领域",
+    "folder": "MODBUS-MCP",
+    "relative_path": "./06_商业与专业领域/MODBUS-MCP"
+  },
+  {
+    "name": "OPCUA-MCP",
+    "description": "标准工业 OPC UA 客户端 MCP。支持自动浏览现场设备节点命名空间，高频读取/写入设备数据项，并可直接调用 OPC UA 服务器内部暴露的方法进行状态切换。",
+    "category": "06_商业与专业领域",
+    "folder": "OPCUA-MCP",
+    "relative_path": "./06_商业与专业领域/OPCUA-MCP"
+  },
+  {
+    "name": "Vibe-Lawyering",
+    "description": "⚖️ 法律人的 AI 工具箱。聚合中国法律领域优质 Agent Skills、法律数据库 MCP 工具与 AI 教育资源的开源社区项目。",
+    "category": "06_商业与专业领域",
+    "folder": "Vibe-Lawyering",
+    "relative_path": "./06_商业与专业领域/Vibe-Lawyering"
+  },
+  {
+    "name": "altium-designer-mcp",
+    "description": "Altium Designer 元器件库智能化管理 MCP。辅助管理 AD 库中的封装、原理图符号并进行参数校验，提升硬件设计的元器件建库效率。",
+    "category": "06_商业与专业领域",
+    "folder": "altium-designer-mcp",
+    "relative_path": "./06_商业与专业领域/altium-designer-mcp"
+  },
+  {
+    "name": "altium-eda-agent",
+    "description": "Altium Designer 深度自动化与智能协作 MCP。内置 300 多个开发工具，通过 DelphiScript 桥接与 Altium 交互，支持自然语言触发设计走线、器件网表分析与连接驱动的智能布局。",
+    "category": "06_商业与专业领域",
+    "folder": "altium-eda-agent",
+    "relative_path": "./06_商业与专业领域/altium-eda-agent"
+  },
+  {
+    "name": "amazon_sp_mcp",
+    "description": "亚马逊 Selling Partner API (SP-API) 销售与运营数据集成 MCP。支持读取店铺每日销售额、财务报告、买家退货分析及订单列表，辅助进行多维度的店铺数据盘点与经营状况分析。",
+    "category": "06_商业与专业领域",
+    "folder": "amazon_sp_mcp",
+    "relative_path": "./06_商业与专业领域/amazon_sp_mcp"
+  },
+  {
+    "name": "arduino-cli-mcp",
+    "description": "封装 Arduino CLI 工具链的嵌入式开发 MCP。支持管理板卡开发包与第三方依赖库，编译并直接上传固件至 Arduino、ESP8266/ESP32 等开发板，且提供串口输出读取功能。",
+    "category": "06_商业与专业领域",
+    "folder": "arduino-cli-mcp",
+    "relative_path": "./06_商业与专业领域/arduino-cli-mcp"
+  },
+  {
+    "name": "buffett-skills",
+    "description": "严格的价值投资质量审查 Skill。在买入决策前执行严格的负面清单审查，包括护城河评估、生意模式判断、现金流健康度、管理层诚信审查以及估值安全边际计算。",
+    "category": "06_商业与专业领域",
+    "folder": "buffett-skills",
+    "relative_path": "./06_商业与专业领域/buffett-skills"
+  },
+  {
+    "name": "buywhere-mcp",
+    "description": "东南亚跨境电商多平台竞品比价与选品 MCP。支持在 Shopee、Lazada 等主流电商品牌上跨渠道对比同款商品的技术参数、价格分布及实时库存，辅助爆款发掘与竞品定价决策。",
+    "category": "06_商业与专业领域",
+    "folder": "buywhere-mcp",
+    "relative_path": "./06_商业与专业领域/buywhere-mcp"
+  },
+  {
+    "name": "china-law",
+    "description": "中国法律实务 Claude Code 插件，集成北大法宝 MCP 和 2,190 部本地法律全文，提供 45 项开箱即用的中国法律实务技能。",
+    "category": "06_商业与专业领域",
+    "folder": "china-law",
+    "relative_path": "./06_商业与专业领域/china-law"
+  },
+  {
+    "name": "developer-growth-analysis",
+    "description": "Analyzes your recent Codex chat history to identify coding patterns, development gaps, and areas for improvement, curates relevant learning resources from HackerNews, and automatically sends a personalized growth report to your Slack DMs.",
+    "category": "06_商业与专业领域",
+    "folder": "开发者成长分析器",
+    "relative_path": "./06_商业与专业领域/开发者成长分析器"
+  },
+  {
+    "name": "digikey_mcp",
+    "description": "DigiKey 官方产品数据库查询 MCP。支持根据关键词或零件编号检索 DigiKey 实时元器件库存、多量阶价格、替代型号推荐及元器件包装与物理参数。",
+    "category": "06_商业与专业领域",
+    "folder": "digikey_mcp",
+    "relative_path": "./06_商业与专业领域/digikey_mcp"
+  },
+  {
+    "name": "domain-name-brainstormer",
+    "description": "Generates creative domain name ideas for your project and checks availability across multiple TLDs (.com, .io, .dev, .ai, etc.). Saves hours of brainstorming and manual checking.",
+    "category": "06_商业与专业领域",
+    "folder": "域名脑暴与可用性检查器",
+    "relative_path": "./06_商业与专业领域/域名脑暴与可用性检查器"
+  },
+  {
+    "name": "eCommerce-Skills",
+    "description": "跨境电商全流程业务智能体技能包。内置 140 多个开箱即用的业务技能与提示词规范，深度覆盖亚马逊、Shopify、Etsy、TikTok Shop、Walmart 的选品研究、广告营销、客服运营及财务对账等领域。",
+    "category": "06_商业与专业领域",
+    "folder": "eCommerce-Skills",
+    "relative_path": "./06_商业与专业领域/eCommerce-Skills"
+  },
+  {
+    "name": "ebay-mcp",
+    "description": "eBay 跨境电商店铺自动化运营 MCP。对接 eBay Sell APIs，提供包含产品在线刊登、订单履行与面单打印、营销折扣活动设置及店铺销量分析在内的 300 多个交互工具。",
+    "category": "06_商业与专业领域",
+    "folder": "ebay-mcp",
+    "relative_path": "./06_商业与专业领域/ebay-mcp"
+  },
+  {
+    "name": "embedded-debugger-mcp",
+    "description": "基于 probe-rs 的底层硬件级在线调试 MCP。支持通过 J-Link、ST-Link 等仿真器直接连接 ARM Cortex-M 和 RISC-V 芯片，进行固件烧录、寄存器读写和断点调试。",
+    "category": "06_商业与专业领域",
+    "folder": "embedded-debugger-mcp",
+    "relative_path": "./06_商业与专业领域/embedded-debugger-mcp"
+  },
+  {
+    "name": "freecad-mcp",
+    "description": "FreeCAD 3D 机械与参数化建模 MCP 服务。连接 AI 大模型与开源 3D CAD 软件 FreeCAD，支持自然语言驱动的实体建模、特征操作（拉伸、打孔、倒角）、无头批量导出转换（STEP/STL）。",
+    "category": "06_商业与专业领域",
+    "folder": "freecad-mcp",
+    "relative_path": "./06_商业与专业领域/freecad-mcp"
+  },
+  {
+    "name": "ha-mcp-python",
+    "description": "社区版 Home Assistant 自动化与设备网关 MCP 服务器。使 AI 智能体能直接读取和控制智能家居设备，辅助进行智能场景的编写、调试和配置变更。",
+    "category": "06_商业与专业领域",
+    "folder": "ha-mcp-python",
+    "relative_path": "./06_商业与专业领域/ha-mcp-python"
+  },
+  {
+    "name": "helium-mcp",
+    "description": "Search real-time news with bias scoring, get live stock/ETF/crypto data with AI analysis, ML options pricing, balanced news synthesis, and meme search via the Helium MCP server.",
+    "category": "06_商业与专业领域",
+    "folder": "Helium资讯MCP",
+    "relative_path": "./06_商业与专业领域/Helium资讯MCP"
+  },
+  {
+    "name": "home-assistant-mcp",
+    "description": "Home Assistant 智能家居与场景控制 MCP 服务。支持通过自然语言查询智能硬件状态、调用服务控制家居设备（如灯光、开关、空调），支持本地 stdio 和远程 SSE 传输。",
+    "category": "06_商业与专业领域",
+    "folder": "home-assistant-mcp",
+    "relative_path": "./06_商业与专业领域/home-assistant-mcp"
+  },
+  {
+    "name": "jlcpcb-parts-mcp",
+    "description": "嘉立创可贴片 (PCBA) 元器件库快速校验与搜索 MCP。支持直接在设计环节查询立创元器件的实时库存量、多量阶价格、贴片费率及替代料选型。",
+    "category": "06_商业与专业领域",
+    "folder": "jlcpcb-parts-mcp",
+    "relative_path": "./06_商业与专业领域/jlcpcb-parts-mcp"
+  },
+  {
+    "name": "kicad-mcp-automation",
+    "description": "KiCad 电路设计与生产自动化审核 MCP。支持通过自然语言创建 PCB 项目、运行电气规则检查 (ERC)、设计规则检查 (DRC)、自动生成物料清单 (BOM) 并导出 Gerber 制造文件。",
+    "category": "06_商业与专业领域",
+    "folder": "kicad-mcp-automation",
+    "relative_path": "./06_商业与专业领域/kicad-mcp-automation"
+  },
+  {
+    "name": "kicad-mcp-seeed",
+    "description": "Seeed Studio 官方开发的 KiCad 智能分析与设计助手 MCP。支持基于 KiCad 9.0+ 的原理图分析、PCB 连接关系追踪、元器件网络检查及生成嵌入式驱动代码。",
+    "category": "06_商业与专业领域",
+    "folder": "kicad-mcp-seeed",
+    "relative_path": "./06_商业与专业领域/kicad-mcp-seeed"
+  },
+  {
+    "name": "lead-research-assistant",
+    "description": "Identifies high-quality leads for your product or service by analyzing your business, searching for target companies, and providing actionable contact strategies. Perfect for sales, business development, and marketing professionals.",
+    "category": "06_商业与专业领域",
+    "folder": "销售线索调研助手",
+    "relative_path": "./06_商业与专业领域/销售线索调研助手"
+  },
+  {
+    "name": "legal-case-analysis-plus",
+    "description": "基于法律关系分析法两阶段五步骤框架的案件分析报告（法律关系分析法 Plus）技能，自动对接华宇元典法律数据 MCP 检索相关法规和案例并生成结构化分析报告。",
+    "category": "06_商业与专业领域",
+    "folder": "legal-case-analysis-plus",
+    "relative_path": "./06_商业与专业领域/legal-case-analysis-plus"
+  },
+  {
+    "name": "mcp2serial",
+    "description": "通用物理串口与控制台交互 MCP。支持直接访问并控制主机的物理串口，支持与各类电子实验板卡（如树莓派 Pico 等）进行直接控制台会话和数据流读写。",
+    "category": "06_商业与专业领域",
+    "folder": "mcp2serial",
+    "relative_path": "./06_商业与专业领域/mcp2serial"
+  },
+  {
+    "name": "mqtt-mcp",
+    "description": "轻量级 MQTT 消息网关与物联网调试 MCP。使智能体可以直接连接至本地或远程 MQTT 代理服务器（Broker），实现消息发布、主题订阅及实时硬件遥测数据流监听。",
+    "category": "06_商业与专业领域",
+    "folder": "mqtt-mcp",
+    "relative_path": "./06_商业与专业领域/mqtt-mcp"
+  },
+  {
+    "name": "nexar-mcp",
+    "description": "对接 Octopart/Nexar API 的电子元器件搜索引擎 MCP。支持元器件型号搜索、实时库存与多渠道报价查询、技术参数对比及数据手册 (Datasheet) 链接检索。",
+    "category": "06_商业与专业领域",
+    "folder": "nexar-mcp",
+    "relative_path": "./06_商业与专业领域/nexar-mcp"
+  },
+  {
+    "name": "openscad-mcp",
+    "description": "OpenSCAD 代码驱动 3D 建模与渲染 MCP 服务。完美契合 AI 代码生成能力，AI 编写 OpenSCAD 参数化代码后，后台自动渲染出 3D 模型的 PNG 预览图并返回，实现大模型的『生成代码 -> 视觉验证 -> 纠错迭代』完美闭环。",
+    "category": "06_商业与专业领域",
+    "folder": "openscad-mcp",
+    "relative_path": "./06_商业与专业领域/openscad-mcp"
+  },
+  {
+    "name": "pcbparts-mcp",
+    "description": "跨平台多源元器件与引脚封装搜索 MCP。整合了嘉立创 (JLCPCB)、Mouser 和 DigiKey 数据源，支持器件的参数化搜索、多渠道选型，并可拉取 EasyEDA 的原理图符号引脚定义。",
+    "category": "06_商业与专业领域",
+    "folder": "pcbparts-mcp",
+    "relative_path": "./06_商业与专业领域/pcbparts-mcp"
+  },
+  {
+    "name": "quantdinger",
+    "description": "一站式 AI 量化交易与策略回测工作台。支持从策略脑暴、代码自动生成、历史行情回测、模拟盘测试，到实盘信号监控的完整闭环，适合想将投研设想直接转化为可执行量化策略的进阶用户。",
+    "category": "06_商业与专业领域",
+    "folder": "quant-dinger",
+    "relative_path": "./06_商业与专业领域/quant-dinger"
+  },
+  {
+    "name": "raffle-winner-picker",
+    "description": "Picks random winners from lists, spreadsheets, or Google Sheets for giveaways, raffles, and contests. Ensures fair, unbiased selection with transparency.",
+    "category": "06_商业与专业领域",
+    "folder": "抽奖与随机选人器",
+    "relative_path": "./06_商业与专业领域/抽奖与随机选人器"
+  },
+  {
+    "name": "rigol-dho824-mcp",
+    "description": "普源 Rigol DHO824 系列数字示波器远程控制 MCP。支持通过以太网 LXI 协议读取仪器状态、抓取当前屏幕截图、采集多通道测量数据，并将波形图导出给智能体分析。",
+    "category": "06_商业与专业领域",
+    "folder": "rigol-dho824-mcp",
+    "relative_path": "./06_商业与专业领域/rigol-dho824-mcp"
+  },
+  {
+    "name": "serenity-skill",
+    "description": "Turn an investment agent into a supply-chain bottleneck hunter. Use this skill for source-backed investment research, live market/theme scans, AI/semi/technology value-chain mapping, A-share/HK/US stock screening, thesis stress tests, and Serenity-inspired research conversations. Trigger on requests like \"用 Serenity 的方式看\", \"深度调研\", \"产业链/供应链/卡点/瓶颈\", \"A股 AI 半导体哪个最值得研究\", \"find unknown bottlenecks\", \"rank candidates\", or \"challenge this thesis\". Outputs plain-language reasoning, ranked research priorities, evidence chains, risks, and next verification steps. Research support only; no trade execution.",
+    "category": "06_商业与专业领域",
+    "folder": "serenity-skill",
+    "relative_path": "./06_商业与专业领域/serenity-skill"
+  },
+  {
+    "name": "shopify-mcp",
+    "description": "Shopify 独立站后台全功能管理 MCP。基于 GraphQL Admin API 深度封装，支持产品 (Products)、订单 (Orders) 和客户 (Customers) 的全生命周期管理，支持更新 Metafields 扩展属性及库存修改。",
+    "category": "06_商业与专业领域",
+    "folder": "shopify-mcp",
+    "relative_path": "./06_商业与专业领域/shopify-mcp"
+  },
+  {
+    "name": "spicebridge",
+    "description": "基于 ngspice 的电路设计与仿真分析 MCP。支持使用自然语言描述电路结构，自动生成标准 SPICE 网表并运行 AC、DC 或瞬态仿真，可分析提取波形数据甚至导出为 KiCad 格式。",
+    "category": "06_商业与专业领域",
+    "folder": "spicebridge",
+    "relative_path": "./06_商业与专业领域/spicebridge"
+  },
+  {
+    "name": "text-to-cad",
+    "description": "基于 Python 脚本与 build123d 引擎的参数化 3D CAD 建模协助工具，支持生成并导出 STEP, STL, GLB, URDF 等工业格式。",
+    "category": "06_商业与专业领域",
+    "folder": "text-to-cad",
+    "relative_path": "./06_商业与专业领域/text-to-cad"
+  },
+  {
+    "name": "tradingagents",
+    "description": "顶级的 AI 金融投研多智能体协作框架。将投资决策流程拆解为基本面分析、情绪分析、新闻监测、技术指标分析、研究员、交易员以及风控管理等多 Agent 角色，可深度演练和定制完整的 AI 投研团队。",
+    "category": "06_商业与专业领域",
+    "folder": "trading-agents",
+    "relative_path": "./06_商业与专业领域/trading-agents"
+  },
+  {
+    "name": "uzi-skill",
+    "description": "中文投资者最实用的 A股/港股/美股 分析技能包。集成 22 个分析维度与 180 条量化审核规则，支持龙虎榜跟踪、个股初筛、深度估值排查，并自带“投资大佬评审团”决策流程。",
+    "category": "06_商业与专业领域",
+    "folder": "uzi-skill",
+    "relative_path": "./06_商业与专业领域/uzi-skill"
+  },
+  {
+    "name": "yuandian-mcp-server",
+    "description": "元典开放平台 MCP Server 是面向法律与企业数据场景的标准化 MCP 接入服务，支持法律法规查询、案例文书检索和企业信息获取，帮助智能体快速接入权威法律数据能力。",
+    "category": "06_商业与专业领域",
+    "folder": "yuandian-mcp-server",
+    "relative_path": "./06_商业与专业领域/yuandian-mcp-server"
+  },
+  {
+    "name": "agent-reach",
+    "description": "免 API 密钥的 16+ 平台数据抓取与 Exa 搜索工具，支持获取推特、小红书、微博、YouTube等媒体的内容与字幕。",
+    "category": "07_智能体框架与协同",
+    "folder": "agent-reach",
+    "relative_path": "./07_智能体框架与协同/agent-reach"
+  },
+  {
+    "name": "aurakit",
+    "description": "全能型 Skill 框架：内置 46 种工作模式、23 个子智能体、6 层 OWASP 安全机制、10 个生命周期钩子，能够节省约 55% 的 Token 开销。",
+    "category": "07_智能体框架与协同",
+    "folder": "aurakit",
+    "relative_path": "./07_智能体框架与协同/aurakit"
+  },
+  {
+    "name": "context-engineering-collection",
+    "description": "A comprehensive collection of Agent Skills for context engineering, harness engineering, multi-agent architectures, and production agent systems. Use when building, optimizing, evaluating, or debugging agent systems that require effective context management and reliable operating loops.",
+    "category": "07_智能体框架与协同",
+    "folder": "context-engineering-skills",
+    "relative_path": "./07_智能体框架与协同/context-engineering-skills"
+  },
+  {
+    "name": "emdash-skills",
+    "description": "包含 14 个分类的自主产品构建 OS：支持 Cloudflare Workers + Hono + Angular + D1 + Stripe。只需一行 Prompt 即可快速部署包含 94 篇参考文档、18 个智能体且原生支持 `.agents/skills/` 的 SaaS 应用。",
+    "category": "07_智能体框架与协同",
+    "folder": "emdash-skills",
+    "relative_path": "./07_智能体框架与协同/emdash-skills"
+  },
+  {
+    "name": "mattpocock-skills",
+    "description": "由 TypeScript 著名开发者 Matt Pocock 设计的模块化、可复用 AI Agent 调试与工程开发工作流技能包，涵盖 TDD、需求澄清（grilling）、代码库架构审计、合并冲突解决等高级工程规范。",
+    "category": "07_智能体框架与协同",
+    "folder": "mattpocock-skills",
+    "relative_path": "./07_智能体框架与协同/mattpocock-skills"
+  },
+  {
+    "name": "polywave",
+    "description": "Coordinate Polywave scout and wave flows in Codex. Use for parallel implementation planning, IMPL creation, and guarded wave execution with polywave-tools and the installed Polywave agents.",
+    "category": "07_智能体框架与协同",
+    "folder": "polywave",
+    "relative_path": "./07_智能体框架与协同/polywave"
+  },
+  {
+    "name": "superclaude-framework",
+    "description": "给 Codex 增加一套常用指令菜单。你可以用更简单的命令，让它做分析、修 bug、写代码、优化项目、生成文档等任务。",
+    "category": "07_智能体框架与协同",
+    "folder": "superclaude-framework",
+    "relative_path": "./07_智能体框架与协同/superclaude-framework"
+  },
+  {
+    "name": "vibe",
+    "description": "Vibe Code Orchestrator (VCO) is a governed runtime entry that freezes requirements, plans XL-first execution, and enforces verification and phase cleanup.",
+    "category": "07_智能体框架与协同",
+    "folder": "vibe-skills",
+    "relative_path": "./07_智能体框架与协同/vibe-skills"
+  },
+  {
+    "name": "mcp-builder",
+    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+    "category": "08_MCP服务开发与评估",
+    "folder": "MCP服务构建器",
+    "relative_path": "./08_MCP服务开发与评估/MCP服务构建器"
+  },
+  {
+    "name": "connect",
+    "description": "Connect Codex to any app via the Composio CLI. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services from the terminal.",
+    "category": "09_Composio集成服务",
+    "folder": "Composio连接器",
+    "relative_path": "./09_Composio集成服务/Composio连接器"
+  },
+  {
+    "name": "connect-apps",
+    "description": "Connect Claude to external apps via the Composio CLI. Use this skill when the user wants to send emails, create issues, post messages, or take actions across Gmail, Slack, GitHub, Notion, and 1000+ services from the terminal.",
+    "category": "09_Composio集成服务",
+    "folder": "应用连接管理器",
+    "relative_path": "./09_Composio集成服务/应用连接管理器"
+  },
+  {
+    "name": "codex-sms-verification",
+    "description": "用于 AI 智能体接入真实 SIM 短信验证码的 VirtualSMS MCP 插件。支持 145+ 国家、2000+ 在线服务，提供云端托管及本地 stdio 两种传输方式。",
+    "category": "10_短信验证码服务",
+    "folder": "codex-sms-verification",
+    "relative_path": "./10_短信验证码服务/codex-sms-verification"
+  },
+  {
+    "name": "agent-deep-links",
+    "description": "Build, validate, and troubleshoot deep links for Codex, Cursor, VS Code, Visual Studio, and similar tools. Use when users ask for clickable links (especially in Slack) that open threads, files, folders, or app settings.",
+    "category": "11_深层链接构建工具",
+    "folder": "智能体深层链接",
+    "relative_path": "./11_深层链接构建工具/智能体深层链接"
+  },
+  {
+    "name": "antfu-skills",
+    "description": "学习高手如何设计 Skills。适合想进阶的人参考，看看优秀开发者是怎么把经验沉淀成可复用工作流的。",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "antfu-skills",
+    "relative_path": "./12_Skill开发脚手架与安装器/antfu-skills"
+  },
+  {
+    "name": "anthropic-official-skills",
+    "description": "Anthropic 官方示例技能库。主要用来学习\"一个好 Skill 应该怎么写\"，也适合拿来当模板，改成自己的专属技能。",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "anthropic-skills",
+    "relative_path": "./12_Skill开发脚手架与安装器/anthropic-skills"
+  },
+  {
+    "name": "awesome-agent-skills",
+    "description": "一个大型 Skills 目录，收集了很多公司和社区做的技能。适合当\"技能导航站\"，需要什么能力时进去找灵感或模板。",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "awesome-agent-skills",
+    "relative_path": "./12_Skill开发脚手架与安装器/awesome-agent-skills"
+  },
+  {
+    "name": "google-skills",
+    "description": "Google 官方的 13 个 Agent 技能库。提供针对 Google Cloud 模块（如 BigQuery、Firebase、GKE 等）的标准模块化技能以及各种 Recipe。可作为大型团队构建标准企业级智能体技能的权威参考。",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "google-skills",
+    "relative_path": "./12_Skill开发脚手架与安装器/google-skills"
+  },
+  {
+    "name": "minimax-skills",
+    "description": "一套现成的工作流程模板，覆盖前端、全栈、移动端和文档写作。适合不知道怎么下指令的新手，直接照着流程让 Codex 干活。",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "minimax-skills",
+    "relative_path": "./12_Skill开发脚手架与安装器/minimax-skills"
+  },
+  {
+    "name": "skill-creator",
+    "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "技能开发创建指南",
+    "relative_path": "./12_Skill开发脚手架与安装器/技能开发创建指南"
+  },
+  {
+    "name": "skill-installer",
+    "description": "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo. Crucially, when the user searches for or requests any skill that is NOT present in the skills collection package, you MUST automatically use this tool to search for and install it.",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "技能极速安装工具",
+    "relative_path": "./12_Skill开发脚手架与安装器/技能极速安装工具"
+  },
+  {
+    "name": "template-skill",
+    "description": "Replace with description of the skill and when Claude should use it.",
+    "category": "12_Skill开发脚手架与安装器",
+    "folder": "技能开发模板脚手架",
+    "relative_path": "./12_Skill开发脚手架与安装器/技能开发模板脚手架"
+  },
+  {
+    "name": "academic-mcp",
+    "description": "19+ 学术数据库统一检索 MCP 服务。支持 arXiv、PubMed、Google Scholar、IEEE Xplore、Scopus、CrossRef、Semantic Scholar 等主流学术平台的论文检索、PDF 下载和全文阅读提取。",
+    "category": "14_学术论文与科研图表",
+    "folder": "academic-mcp",
+    "relative_path": "./14_学术论文与科研图表/academic-mcp"
+  },
+  {
+    "name": "academic-paper",
+    "description": "12-agent academic paper writing pipeline with style calibration, writing quality check checklists, and revision coaching.",
+    "category": "14_学术论文与科研图表",
+    "folder": "academic-paper",
+    "relative_path": "./14_学术论文与科研图表/academic-paper"
+  },
+  {
+    "name": "academic-paper-reviewer",
+    "description": "7-agent peer review simulator providing editorial decision and prioritized revision roadmap.",
+    "category": "14_学术论文与科研图表",
+    "folder": "academic-paper-reviewer",
+    "relative_path": "./14_学术论文与科研图表/academic-paper-reviewer"
+  },
+  {
+    "name": "academic-pipeline",
+    "description": "10-stage end-to-end academic research pipeline orchestrator with Material Passport tracking.",
+    "category": "14_学术论文与科研图表",
+    "folder": "academic-pipeline",
+    "relative_path": "./14_学术论文与科研图表/academic-pipeline"
+  },
+  {
+    "name": "arxiv-latex-reader",
+    "description": "arXiv 数学公式与 LaTeX 源码解析器。可自动下载 arXiv 论文的 LaTeX 源码，解压多文件包，检索其中的公式、定理、段落，解决从 PDF 直接复制公式时出现的乱码、上下标错位或排版丢失问题。",
+    "category": "14_学术论文与科研图表",
+    "folder": "arxiv-latex-reader",
+    "relative_path": "./14_学术论文与科研图表/arxiv-latex-reader"
+  },
+  {
+    "name": "deep-research",
+    "description": "Multi-agent Socratic research guiding & PRISMA-style systematic literature reviews with Semantic Scholar API verification.",
+    "category": "14_学术论文与科研图表",
+    "folder": "deep-research",
+    "relative_path": "./14_学术论文与科研图表/deep-research"
+  },
+  {
+    "name": "google-scholar-mcp",
+    "description": "Google Scholar 学术检索 MCP 服务。专用 Google Scholar 桥接工具，支持论文检索、作者信息查询、引用数据获取，可通过 Smithery 一键安装到 Claude Desktop 和 Cursor。",
+    "category": "14_学术论文与科研图表",
+    "folder": "google-scholar-mcp",
+    "relative_path": "./14_学术论文与科研图表/google-scholar-mcp"
+  },
+  {
+    "name": "paper-search",
+    "description": "文献学术检索工具。支持在 arXiv 和 PubMed 数据库中检索最新的学术论文、检索论文元数据（标题、作者、来源、年份、摘要、链接），并生成规范的 Markdown 格式列表。",
+    "category": "14_学术论文与科研图表",
+    "folder": "paper-search",
+    "relative_path": "./14_学术论文与科研图表/paper-search"
+  },
+  {
+    "name": "paper-search-mcp",
+    "description": "多源学术论文并发检索 MCP 服务。支持 arXiv、PubMed、bioRxiv、medRxiv、Google Scholar、IACR、Semantic Scholar 等 7+ 数据库并发搜索、自动去重、LLM 标准化输出。",
+    "category": "14_学术论文与科研图表",
+    "folder": "paper-search-mcp",
+    "relative_path": "./14_学术论文与科研图表/paper-search-mcp"
+  },
+  {
+    "name": "sci-hub-mcp",
+    "description": "Sci-Hub 全文 PDF 获取 MCP 服务。通过 DOI、论文标题或关键词检索并下载学术论文全文 PDF，解决'找到论文但无法获取原文'的最后一公里问题。",
+    "category": "14_学术论文与科研图表",
+    "folder": "sci-hub-mcp",
+    "relative_path": "./14_学术论文与科研图表/sci-hub-mcp"
+  },
+  {
+    "name": "scientific-schematics",
+    "description": "使用 Nano Banana Pro AI 生成发表级的科研原理图、网络架构图、信号通路图及流程图，并由 Gemini 3 Pro 进行智能微调与质检。",
+    "category": "14_学术论文与科研图表",
+    "folder": "scientific-schematics",
+    "relative_path": "./14_学术论文与科研图表/scientific-schematics"
+  },
+  {
+    "name": "scientific-visualization",
+    "description": "使用 Matplotlib、Seaborn 和 Plotly 绘制发表级学术图表，支持单/双栏尺寸规范、色盲友好调色板、误差线、显著性标记及高分辨率矢量导出。",
+    "category": "14_学术论文与科研图表",
+    "folder": "scientific-visualization",
+    "relative_path": "./14_学术论文与科研图表/scientific-visualization"
+  },
+  {
+    "name": "semantic-scholar-mcp",
+    "description": "Semantic Scholar 学术引文网络分析 MCP 服务。接入 2 亿+ 论文数据库，支持引文图谱遍历、作者 h-index 画像、DOI/arXiv ID 查询，科研文献综述和影响力分析利器。",
+    "category": "14_学术论文与科研图表",
+    "folder": "semantic-scholar-mcp",
+    "relative_path": "./14_学术论文与科研图表/semantic-scholar-mcp"
+  },
+  {
+    "name": "sympy-solver",
+    "description": "SymPy 符号代数数学计算器。通过本地 Python SymPy 库对复杂的微积分、代数方程组、矩阵代数和极限进行符号求解，生成精确的数学结果与标准 LaTeX 数学公式，彻底杜绝大模型在数学计算上的幻觉。",
+    "category": "14_学术论文与科研图表",
+    "folder": "sympy-solver",
+    "relative_path": "./14_学术论文与科研图表/sympy-solver"
+  },
+  {
+    "name": "zotero-connector",
+    "description": "Zotero 文献库管理同步。支持读取本地 Zotero 数据库（SQLite）或者调用 Zotero Web API，快速检索个人文献库中的论文、作者、发表日期、标签及摘要信息。",
+    "category": "14_学术论文与科研图表",
+    "folder": "zotero-connector",
+    "relative_path": "./14_学术论文与科研图表/zotero-connector"
+  },
+  {
+    "name": "playwright-mcp",
+    "description": "赋予大模型真实操控浏览器执行代码能力的 MCP 代理服务 (由 Microsoft 提供)。",
+    "category": "03_效率工具与协同管理",
+    "folder": "playwright-mcp",
+    "relative_path": "03_效率工具与协同管理/playwright-mcp"
+  },
+  {
+    "name": "browser-use",
+    "description": "能够让 AI 拟人化且基于语义认知网页结构的自动化智能导航操控库。",
+    "category": "03_效率工具与协同管理",
+    "folder": "browser-use",
+    "relative_path": "03_效率工具与协同管理/browser-use"
+  },
+  {
+    "name": "n8n-mcp",
+    "description": "专为 AI 提供触发和控制复杂 n8n 工作流节点的 MCP 接口服务。",
+    "category": "13_API与第三方应用集成",
+    "folder": "n8n-mcp",
+    "relative_path": "13_API与第三方应用集成/n8n-mcp"
+  },
+  {
+    "name": "ui-ux-pro-max-skill",
+    "description": "包含数百条现代 UI/UX 设计系统标准与审查原则的专业 Agent 技能。",
+    "category": "05_多媒体与设计资产",
+    "folder": "ui-ux-pro-max-skill",
+    "relative_path": "05_多媒体与设计资产/ui-ux-pro-max-skill"
+  },
+  {
+    "name": "anysearch-skill",
+    "description": "统一化聚合全网 23 个垂直专业领域（医疗、法律、商业等）的智能聚合搜索能力。",
+    "category": "04_内容创作与文档处理",
+    "folder": "anysearch-skill",
+    "relative_path": "04_内容创作与文档处理/anysearch-skill"
+  }
 ]
